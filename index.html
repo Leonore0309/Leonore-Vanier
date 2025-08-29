@@ -2,472 +2,263 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Léonore Vanier — Comédienne | Autrice</title>
-  <meta name="description" content="Portfolio officiel d'actrice : bande démo, photos, biographie, informations casting, filmographie, formations et contact agent." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Optionnel : police Google Fonts (sinon le site utilise les polices système) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nom Prénom • Comédien·ne • Scénariste</title>
+  <meta name="description" content="Site officiel — Comédien·ne / Scénariste : bande démo, photos, biographie, informations casting, filmographie, contact." />
   <style>
-    /* ====== Design system (mobile-first) ====== */
     :root{
-      --bg: #0b1020;            /* bleu nuit */
-      --panel: #0f172a;         /* slate-900 */
-      --panel-2: #111827;       /* gray-900 */
-      --text: #e5e7eb;          /* gray-200 */
-      --muted: #cbd5e1;         /* slate-300 */
-      --accent: #38bdf8;        /* sky-400 */
-      --accent-2: #93c5fd;      /* blue-300 */
-      --border: #1f2937;        /* gray-800 */
-      --shadow: 0 10px 30px rgba(2,6,23,.35);
-      --radius: 18px;
-      --container: 1150px;
+      --bg:#0f0f10; /* très sombre */
+      --fg:#f3f3f4; /* texte principal */
+      --muted:#bdbec2; /* texte secondaire */
+      --accent:#ffffff; /* liens/boutons – volontairement sobre */
+      --card:#16171a; /* blocs */
+      --border:#26272b;
+      --maxw:1100px; /* largeur maxi desktop */
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";}
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
-    .shadow{box-shadow:var(--shadow)}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:var(--radius)}
-    .pill{display:inline-flex;gap:.5rem;align-items:center;padding:.45rem .8rem;border:1px solid var(--border);border-radius:9999px;background:rgba(255,255,255,.04)}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.1rem;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(56,189,248,.18),rgba(56,189,248,.12));color:white;font-weight:600}
-    .btn:hover{transform:translateY(-1px);}
-    .btn.secondary{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));color:var(--text)}
-    .section{padding:64px 0}
-    .muted{color:var(--muted)}
-    .grid{display:grid;gap:16px}
-    .grid-2{grid-template-columns:1fr}
-    .grid-3{grid-template-columns:1fr}
-    .grid-4{grid-template-columns:1fr 1fr}
-    .center{text-align:center}
-    .hidden{display:none}
 
-    /* Header & nav */
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg,rgba(11,16,32,.8),rgba(11,16,32,.3));border-bottom:1px solid var(--border)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:10px;height:64px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
-    .role{opacity:.85;font-weight:600}
-    .menu{display:flex;gap:10px}
-    .menu a{padding:8px 10px;border-radius:10px}
-    .menu a:hover{background:rgba(255,255,255,.06)}
-    .hamburger{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.04)}
-    .mobile-drawer{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none}
-    .mobile-drawer.open{display:block}
-    .drawer-panel{position:absolute;right:0;top:0;height:100%;width:min(86%,360px);background:var(--panel);padding:24px;border-left:1px solid var(--border)}
-    .drawer-panel a{display:block;padding:12px 10px;border-radius:10px}
-    .drawer-panel a:hover{background:rgba(255,255,255,.06)}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      color:var(--fg);
+      background:var(--bg);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-    /* Hero */
-    .hero{position:relative;padding:84px 0 48px}
-    .hero-inner{display:grid;gap:24px}
-    .hero h1{font-size:clamp(2rem,7vw,3.5rem);line-height:1.05;margin:0}
-    .hero p{margin:0}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-    .hero .bg{position:absolute;inset:0;z-index:-1;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=2400&auto=format&fit=crop') center/cover no-repeat;opacity:.18;filter:saturate(1.2)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
 
-    /* Sections */
-    h2{font-size:clamp(1.4rem,4.5vw,2rem);margin:0 0 18px}
-    h3{margin:0 0 12px}
-    .lead{font-size:1.05rem;opacity:.9}
+    /* Layout principal */
+    .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
+    .site-grid{display:grid;gap:24px}
 
-    /* Showreel */
-    .video-embed{position:relative;width:100%;padding-bottom:56.25%;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-    .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-    .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .video-thumb{border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;background:rgba(255,255,255,.04)}
-    .video-thumb img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+    /* Header / hero */
+    .hero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;flex-direction:column}
+    .name{font-weight:800;letter-spacing:.3px;margin:0;font-size:clamp(22px,4.8vw,40px)}
+    .roles{color:var(--muted);margin-top:2px}
 
-    /* Photos */
-    .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .photo-grid img{border-radius:14px;border:1px solid var(--border);cursor:pointer}
+    .lang-switch{display:flex;gap:10px;align-items:center}
+    .pill{border:1px solid var(--border);border-radius:999px;padding:6px 10px;color:var(--muted)}
 
-    /* Bio */
-    .bio{line-height:1.7}
-    .bio .more{display:none}
-    .bio.expanded .more{display:inline}
-    .bio .fade{background:linear-gradient(180deg,rgba(11,16,32,0),rgba(11,16,32,1));height:64px;margin-top:-64px}
+    /* Navigation simple (Liens / Sections) */
+    .top-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+    .top-nav a{padding:6px 10px;border:1px solid var(--border);border-radius:10px}
 
-    /* Casting info */
-    .kv{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-    .kv b{opacity:.9}
+    /* Grilles des sections */
+    .section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+    .section h2{margin:0 0 12px 0;font-size:20px}
 
-    /* Credits */
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-    .tab{padding:.6rem .9rem;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.04);cursor:pointer}
-    .tab[aria-selected="true"]{background:linear-gradient(180deg,rgba(56,189,248,.18),rgba(56,189,248,.12));}
-    table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:14px;overflow:hidden}
-    th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left}
-    th{background:rgba(255,255,255,.04)}
+    .media-grid{display:grid;gap:14px}
+    .video-card,.photo{background:#0c0d10;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .thumb{aspect-ratio:16/9;background:#1d1f25;display:grid;place-items:center;font-size:13px;color:var(--muted)}
+    .video-meta{padding:10px}
+    .video-meta h3{margin:0 0 6px 0;font-size:16px}
+    .meta-row{font-size:13px;color:var(--muted)}
 
-    /* Contact */
-    .contact-card{display:grid;gap:12px}
-    .contact-card a[href^="mailto:"], .contact-card a[href^="tel:"]{text-decoration:underline}
+    .gallery{display:grid;gap:10px}
+    .gallery .photo{aspect-ratio:4/5}
+
+    .two-col{display:grid;gap:24px}
+
+    /* Blocs de texte */
+    .text p{margin:0}
+    .text .more{display:none;margin-top:10px}
+    .text.expanded .more{display:block}
+    .toggle{display:inline-block;margin-top:10px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;color:var(--muted)}
+
+    /* Listes casting / filmographie */
+    .kv-list{display:grid;gap:8px}
+    .kv-list .kv{display:grid;grid-template-columns:160px 1fr;gap:8px}
+    .kv .k{color:var(--muted)}
+
+    .credit-list{display:grid;gap:8px}
+    .credit{padding:10px;border:1px solid var(--border);border-radius:10px}
+    .credit .title{font-weight:600}
+    .credit .role{color:var(--muted)}
 
     /* Footer */
-    footer{padding:30px 0;border-top:1px solid var(--border);opacity:.8}
+    footer{margin-top:24px;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:14px}
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
-    .lightbox.open{display:flex}
-    .lightbox img{max-height:90vh;border-radius:18px;border:1px solid var(--border)}
+    /* RESPONSIVE */
+    @media (min-width: 900px){
+      .site-grid{grid-template-columns: 1fr 360px}
+      .two-col{grid-template-columns:1fr 1fr}
+      .media-grid{grid-template-columns: 1fr 1fr}
+      .gallery{grid-template-columns: repeat(5,1fr)}
+    }
 
-    /* Language switch */
-    .lang-fr[hidden], .lang-en[hidden]{display:none !important}
-
-    /* Responsive */
-    @media (min-width:640px){
-      .hero-inner{grid-template-columns:1.1fr .9fr;align-items:center}
-      .grid-2{grid-template-columns:1fr 1fr}
-      .grid-3{grid-template-columns:repeat(3,1fr)}
-      .grid-4{grid-template-columns:repeat(4,1fr)}
-      .video-grid{grid-template-columns:repeat(4,1fr)}
-      .photo-grid{grid-template-columns:repeat(4,1fr);gap:10px}
-      .kv{grid-template-columns:repeat(4,1fr)}
-      .contact-card{grid-template-columns:1fr 1fr}
+    @media (max-width: 899px){
+      .site-grid{grid-template-columns: 1fr}
+      .media-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns: repeat(3,1fr)}
     }
   </style>
 </head>
 <body>
-  <!-- JSON-LD SEO (remplir les champs) -->
-  <script id="schemaPerson" type="application/ld+json"></script>
-
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="Accueil">
-        <span style="font-size:1.15rem">Nom&nbsp;Prénom</span>
-        <span class="pill role">Comédienne · Scénariste</span>
-      </a>
-      <nav class="menu" aria-label="Navigation principale">
-        <a href="#showreel">Bande démo</a>
+  <header class="container hero" role="banner">
+    <div class="brand">
+      <h1 class="name">Nom PRÉNOM</h1>
+      <div class="roles">Comédien·ne • Scénariste</div>
+      <nav class="top-nav" aria-label="Navigation principale">
+        <a href="#liens">Liens</a>
+        <a href="#videos">Vidéos</a>
         <a href="#photos">Photos</a>
-        <a href="#bio">Bio</a>
-        <a href="#casting">Casting</a>
-        <a href="#credits">Crédits</a>
+        <a href="#biographie">Biographie</a>
+        <a href="#casting">Infos casting</a>
+        <a href="#credits">Filmographie</a>
         <a href="#contact">Contact</a>
+        <a href="#audio">Audio</a>
       </nav>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button id="langBtn" class="pill" aria-label="Basculer la langue">FR / EN</button>
-        <button id="openDrawer" class="hamburger" aria-label="Ouvrir le menu">☰</button>
-      </div>
     </div>
-    <div id="drawer" class="mobile-drawer" aria-hidden="true">
-      <div class="drawer-panel">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
-          <strong>Léonore Vanier</strong>
-          <button id="closeDrawer" class="hamburger" aria-label="Fermer le menu">✕</button>
-        </div>
-        <a href="#showreel">Bande démo</a>
-        <a href="#photos">Photos</a>
-        <a href="#bio">Bio</a>
-        <a href="#casting">Informations casting</a>
-        <a href="#credits">Crédits</a>
-        <a href="#contact">Contact</a>
-        <hr style="border:0;border-top:1px solid var(--border);margin:14px 0">
-        <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
-      </div>
+    <div class="lang-switch" aria-label="Langues">
+      <span class="pill">fr</span>
+      <a class="pill" href="#" lang="en" hreflang="en" aria-label="Switch to English">en</a>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="bg" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <div>
-          <p class="pill" style="margin-bottom:10px">Disponible · Paris · Permis B</p>
-          <h1>Nom Prénom</h1>
-          <p class="lead muted lang-fr">Comédienne française basée à Paris. Bilingue FR/EN, espagnol courant. Représentée par <a href="#contact">[Nom de l’agent]</a>.</p>
-          <p class="lead muted lang-en" hidden>French actress based in Paris. Fluent FR/EN, Spanish. Represented by <a href="#contact">[Agent name]</a>.</p>
-          <div class="hero-actions" style="margin-top:16px">
-            <a class="btn" href="#showreel">▶︎ Voir la bande démo</a>
-            <a class="btn secondary" href="#contact">✉️ Contact / Agent</a>
+  <main class="container site-grid" id="main" role="main">
+    <!-- Colonne principale -->
+    <section id="videos" class="section" aria-labelledby="videos-title">
+      <h2 id="videos-title">Bande démo</h2>
+      <div class="media-grid">
+        <!-- Carte vidéo 1 (Bande démo principale) -->
+        <article class="video-card">
+          <a class="thumb" href="https://youtu.be/xxxxxxxx" target="_blank" rel="noopener">Pré-aperçu vidéo 16:9</a>
+          <div class="video-meta">
+            <h3>Bande démo 2025</h3>
+            <div class="meta-row">Durée : 4:14 • Vues 2 676</div>
+          </div>
+        </article>
+        <!-- Autres vidéos -->
+        <article class="video-card">
+          <a class="thumb" href="https://youtu.be/xxxxxxxx" target="_blank" rel="noopener">Pré-aperçu vidéo 16:9</a>
+          <div class="video-meta">
+            <h3>Bande démo 2023 V1b</h3>
+            <div class="meta-row">Durée : 3:33 • Vues 1 419</div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:12px"><a href="#" aria-label="Voir toutes les vidéos">Toutes les vidéos</a></p>
+    </section>
+
+    <section id="photos" class="section" aria-labelledby="photos-title">
+      <h2 id="photos-title">Portraits — 10 photos</h2>
+      <div class="gallery">
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+        <a class="photo" href="#"> </a>
+      </div>
+      <p style="margin-top:12px"><a href="#" aria-label="Voir toutes les photos">Voir toutes les photos</a></p>
+    </section>
+
+    <!-- Colonne latérale (droite) -->
+    <aside class="section" id="biographie" aria-labelledby="bio-title">
+      <h2 id="bio-title">Biographie</h2>
+      <div class="text" id="bio-block">
+        <p>Curieux·se du monde, jouer la comédie est pour moi un besoin d\'expression… (votre texte).</p>
+        <div class="more">
+          <p>Paragraphe complémentaire affiché en cliquant sur « Afficher la suite ».</p>
+        </div>
+        <a href="#" class="toggle" data-target="bio-block">Afficher la suite</a>
+      </div>
+    </aside>
+
+    <aside class="section" id="casting" aria-labelledby="casting-title">
+      <h2 id="casting-title">Informations casting</h2>
+      <div class="kv-list">
+        <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue) | Espagnol (bilingue)</div></div>
+        <div class="kv"><div class="k">Danses</div><div>Salsa (bon niveau)</div></div>
+        <div class="kv"><div class="k">Permis</div><div>Voiture</div></div>
+        <div class="kv"><div class="k">Divers</div><div>Boxe thaï, Ski (patinettes), Gymnastique</div></div>
+      </div>
+
+      <h3 style="margin:16px 0 8px 0">Caractéristiques physiques</h3>
+      <div class="kv-list">
+        <div class="kv"><div class="k">Taille</div><div>1,69 m</div></div>
+        <div class="kv"><div class="k">Poids</div><div>54 kg</div></div>
+        <div class="kv"><div class="k">Cheveux</div><div>Bruns | Longs | Ondulés</div></div>
+        <div class="kv"><div class="k">Yeux</div><div>Marron</div></div>
+        <div class="kv"><div class="k">Mensurations</div><div>85 – 67 – 98</div></div>
+        <div class="kv"><div class="k">Pointure</div><div>38</div></div>
+      </div>
+    </aside>
+
+    <section class="section two-col" id="credits" aria-labelledby="credits-title">
+      <div>
+        <h2 id="credits-title">Court métrage</h2>
+        <div class="credit-list">
+          <div class="credit">
+            <div class="title">Rencontre(s)</div>
+            <div class="role">Rôle — Réal. Badrane Siby</div>
+          </div>
+          <div class="credit">
+            <div class="title">Je vais bien, ne t\'en fais pas</div>
+            <div class="role">Rôle — Réal. Louise Ferauge</div>
           </div>
         </div>
-        <div class="card shadow" style="padding:10px">
-          <div class="video-embed">
-            <!-- Remplacez src par votre URL YouTube/Vimeo embed -->
-            <iframe id="mainVideo" src="https://youtu.be/2cULRf3Run4?si=dw4ClEUqNMHcJQIV" title="Bande démo 2025" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div>
+        <h2>Réalisation & Écriture</h2>
+        <div class="credit-list">
+          <div class="credit">
+            <div class="title">Sombras de Sal (2025) — Réalisation</div>
+            <div class="role">Court métrage — Drame</div>
           </div>
-          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:10px">
-            <span class="muted">Bande démo 2025</span>
-            <a class="pill" href="#showreel">Toutes les vidéos →</a>
+          <div class="credit">
+            <div class="title">Spleen (2024) — Écriture</div>
+            <div class="role">Long métrage — Drame / Suspense</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Showreel / Videos -->
-    <section id="showreel" class="section">
-      <div class="container">
-        <h2>Vidéos</h2>
-        <p class="muted">Bande démo et extraits (sélection).</p>
-        <div class="video-grid" id="videoGrid">
-          <!-- Cartes vidéo (cliquables pour charger dans l’iframe principale) -->
-          <button class="video-thumb" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" aria-label="Lire : Bande démo 2025">
-            <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="Miniature vidéo 1" />
-          </button>
-        </div>
-      </div>
+    <section id="audio" class="section" aria-labelledby="audio-title">
+      <h2 id="audio-title">Audio</h2>
+      <p>Ajoutez ici un lecteur ou des liens audio (SoundCloud, MP3). Exemple : <a href="#">Bande démo voix-off</a>.</p>
     </section>
 
-    <!-- Photos -->
-    <section id="photos" class="section">
-      <div class="container">
-        <h2>Portraits & Photos</h2>
-        <p class="muted">Cliquez pour agrandir. Remplacez les URLs par vos photos.</p>
-        <div class="photo-grid" id="photoGrid">
-          <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop" alt="Portrait 1" />
-          <img src="https://images.unsplash.com/photo-1487412720507-3caca0bf7d5f?q=80&w=800&auto=format&fit=crop" alt="Portrait 2" />
-          <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?q=80&w=800&auto=format&fit=crop" alt="Portrait 3" />
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop" alt="Portrait 4" />
-          <img src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=800&auto=format&fit=crop" alt="Portrait 5" />
-          <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Portrait 6" />
-          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop" alt="Portrait 7" />
-          <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=800&auto=format&fit=crop" alt="Portrait 8" />
-        </div>
-      </div>
+    <section id="liens" class="section" aria-labelledby="links-title">
+      <h2 id="links-title">Liens</h2>
+      <p>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a> ·
+        <a href="#" target="_blank" rel="noopener">IMDb</a> ·
+        <a href="#" target="_blank" rel="noopener">YouTube</a>
+      </p>
     </section>
 
-    <!-- Bio -->
-    <section id="bio" class="section">
-      <div class="container grid grid-2">
-        <div>
-          <h2>Biographie</h2>
-          <p class="bio" id="bioText">
-            <span class="lang-fr"> "Invente, imagine, suppose // Fouille dans ton esprit, cherches y quelque chose // D'intense, d'insensé, d'inouie // Une fatalité dont on soit éblouie". </span>
-            <span class="lang-en" hidden>Ruy Blas, Victor Hugo.</span>
-            <span class="more">
-              <span class="lang-fr">Ma pièce LE BAIN a été sélectionné en festival des travaux de fin d'études du Cours Florent. Je parle anglais couramment et espagnol. .</span>
-              <span class="lang-en" hidden>A traduire.</span>
-            </span>
-          </p>
-          <button id="toggleBio" class="btn secondary">Lire plus</button>
-        </div>
-        <div class="card" style="padding:18px">
-          <h3 style="margin-top:0">Informations casting</h3>
-          <div class="kv">
-            <div><b>Langues</b><br><span>Français (natif), Anglais (bilingue), Espagnol</span></div>
-            <div><b>Accents</b><br><span>FR standard, UK, ES</span></div>
-            <div><b>Taille</b><br><span>1m70</span></div>
-            <div><b>Cheveux / Yeux</b><br><span>Bruns · Noisette</span></div>
-            <div><b>Jeux / Danses</b><br><span>Impro, Systema · Classique, Modern'jazz, Cheerleading</span></div>
-            <div><b>Sports</b><br><span>Ski, Natation, Karaté</span></div>
-            <div><b>Permis</b><br><span>B (voiture)</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Credits -->
-    <section id="credits" class="section">
-      <div class="container">
-        <h2>Crédits sélectionnés</h2>
-        <div class="tabs" role="tablist">
-          <button class="tab" role="tab" aria-selected="true" data-tab="cinema">Cinéma</button>
-          <button class="tab" role="tab" aria-selected="false" data-tab="tv">TV / Web</button>
-          <button class="tab" role="tab" aria-selected="false" data-tab="theatre">Théâtre</button>
-          <button class="tab" role="tab" aria-selected="false" data-tab="real">Réalisation</button>
-        </div>
-        <div id="tabPanels">
-          <div role="tabpanel" id="panel-cinema">
-            <table>
-              <thead><tr><th>Année</th><th>Titre</th><th>Rôle</th><th>Réalisateur·rice</th></tr></thead>
-              <tbody>
-                <tr><td>2025</td><td>Le Dernier Métro (CM)</td><td>Lea</td><td>A. Durant</td></tr>
-                <tr><td>2024</td><td>Horizons (LM)</td><td>Caméo</td><td>M. Roche</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div role="tabpanel" id="panel-tv" hidden>
-            <table>
-              <thead><tr><th>Année</th><th>Projet</th><th>Rôle</th><th>Réalisateur·rice</th></tr></thead>
-              <tbody>
-                <tr><td>2025</td><td>Série Web – Épisode 3</td><td>Invitée</td><td>J. Martin</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div role="tabpanel" id="panel-theatre" hidden>
-            <table>
-              <thead><tr><th>Année</th><th>Pièce</th><th>Rôle</th><th>Metteur·euse</th></tr></thead>
-              <tbody>
-                <tr><td>2023</td><td>Antigone</td><td>Ismène</td><td>C. Bernard</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div role="tabpanel" id="panel-real" hidden>
-            <table>
-              <thead><tr><th>Année</th><th>Projet</th><th>Type</th><th>Remarque</th></tr></thead>
-              <tbody>
-                <tr><td>2025</td><td>Ombres de Sel</td><td>Court</td><td>Auteure‑réalisatrice</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div role="tabpanel" id="panel-ecriture" hidden>
-            <table>
-              <thead><tr><th>Année</th><th>Projet</th><th>Format</th><th>Genre</th></tr></thead>
-              <tbody>
-                <tr><td>2024</td><td>Spleen</td><td>Long</td><td>Drame</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Training -->
-    <section id="training" class="section">
-      <div class="container grid grid-2">
-        <div>
-          <h2>Formations</h2>
-          <ul class="muted" style="line-height:1.9">
-            <li>The Actor Temple — Londres</li>
-            <li>Meisner (stages) — Paris / Londres</li>
-            <li>Impro — The Free Association (UK)</li>
-            <li>1ère année — Cours Florent, Paris</li>
-          </ul>
-        </div>
-        <div class="card" style="padding:18px">
-          <h3 style="margin-top:0">Compétences & Atouts</h3>
-          <p class="muted">FR/EN, espagnol, improvisation, jeu face caméra, chant léger, danse latine.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact & Représentation</h2>
-        <div class="contact-card card" style="padding:18px">
-          <div>
-            <h3 style="margin-top:0">Agent</h3>
-            <p>
-              <b>Nom de l’agent</b><br>
-              <a href="mailto:agent@example.com">agent@example.com</a> · <a href="tel:+33123456789">+33 1 23 45 67 89</a><br>
-              <a href="https://agence.example.com" target="_blank" rel="noopener">agence.example.com</a>
-            </p>
-          </div>
-          <div>
-            <h3 style="margin-top:0">Contact direct</h3>
-            <p>
-              <a href="mailto:contact@example.com">contact@example.com</a><br>
-              Instagram : <a href="https://instagram.com/username" target="_blank" rel="noopener">@username</a>
-            </p>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn" href="#photos">Télécharger photos</a>
-              <a class="btn secondary" href="#" download>Press kit PDF</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact</h2>
+      <p>Représentation / Booking : <a href="mailto:agent@exemple.com">agent@exemple.com</a><br/>Direct : <a href="mailto:votre.email@exemple.com">votre.email@exemple.com</a></p>
     </section>
   </main>
 
-  <footer>
-    <div class="container" style="display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap">
-      <span class="muted">© <span id="year"></span> Nom Prénom</span>
-      <span class="muted">Site statique – aucune donnée personnelle collectée.</span>
-    </div>
+  <footer class="container">
+    <small>© <span id="year"></span> Nom Prénom — Site administré par Vous-même • Réalisé avec HTML/CSS (hébergement GitHub Pages).</small>
   </footer>
 
-  <!-- Lightbox modal -->
-  <div id="lightbox" class="lightbox" aria-modal="true" role="dialog" aria-label="Photo agrandie">
-    <img id="lightboxImg" alt="Agrandissement photo" />
-  </div>
-
   <script>
-    // ===== Variables à personnaliser =====
-    const SITE_DATA = {
-      name: "Nom Prénom",
-      job: ["Comédienne","Scénariste"],
-      email: "contact@example.com",
-      instagram: "https://instagram.com/username",
-      telephone: "+33123456789",
-      city: "Paris, FR",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop",
-    };
+    // Année automatique
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ===== SEO JSON-LD injection =====
-    const schema = {
-      "@context":"https://schema.org",
-      "@type":"Person",
-      "name": SITE_DATA.name,
-      "jobTitle":"Actress",
-      "url": location.href,
-      "image": SITE_DATA.image,
-      "email": `mailto:${SITE_DATA.email}`,
-      "telephone": SITE_DATA.telephone,
-      "sameAs":[SITE_DATA.instagram]
-    };
-    document.getElementById('schemaPerson').textContent = JSON.stringify(schema);
-
-    // ===== UI interactions =====
-    const yearEl = document.getElementById('year');
-    yearEl.textContent = new Date().getFullYear();
-
-    // Mobile drawer
-    const drawer = document.getElementById('drawer');
-    document.getElementById('openDrawer').addEventListener('click',()=>{drawer.classList.add('open');drawer.setAttribute('aria-hidden','false')});
-    document.getElementById('closeDrawer').addEventListener('click',()=>{drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true')});
-    drawer.addEventListener('click',e=>{ if(e.target===drawer){ drawer.classList.remove('open'); } });
-
-    // Language toggle FR/EN
-    let currentLang = 'fr';
-    const langBtn = document.getElementById('langBtn');
-    const swapLang = () => {
-      currentLang = currentLang === 'fr' ? 'en' : 'fr';
-      document.querySelectorAll('.lang-fr').forEach(n=> n.hidden = currentLang !== 'fr');
-      document.querySelectorAll('.lang-en').forEach(n=> n.hidden = currentLang !== 'en');
-      langBtn.textContent = currentLang.toUpperCase()+ ' / ' + (currentLang === 'fr' ? 'EN' : 'FR');
-    };
-    langBtn.addEventListener('click', swapLang);
-
-    // Bio expand/collapse
-    const bio = document.getElementById('bioText');
-    const toggleBtn = document.getElementById('toggleBio');
-    toggleBtn.addEventListener('click',()=>{
-      bio.classList.toggle('expanded');
-      toggleBtn.textContent = bio.classList.contains('expanded') ? (currentLang==='fr'?'Réduire':'Show less') : (currentLang==='fr'?'Lire plus':'Read more');
-    });
-
-    // Video thumbs → swap main iframe
-    const videoGrid = document.getElementById('videoGrid');
-    const mainVideo = document.getElementById('mainVideo');
-    videoGrid.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.video-thumb');
-      if(!btn) return;
-      const url = btn.getAttribute('data-video');
-      if(url){ mainVideo.src = url; mainVideo.focus(); }
-    });
-
-    // Lightbox for photos
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightboxImg');
-    document.getElementById('photoGrid').addEventListener('click', (e)=>{
-      const img = e.target.closest('img');
-      if(!img) return;
-      lbImg.src = img.src;
-      lb.classList.add('open');
-    });
-    lb.addEventListener('click', ()=> lb.classList.remove('open'));
-
-    // Smooth scroll for in-page anchors
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id = a.getAttribute('href');
-        if(id.length>1){
-          const target = document.querySelector(id);
-          if(target){
-            e.preventDefault();
-            target.scrollIntoView({behavior:'smooth',block:'start'});
-            drawer.classList.remove('open');
-          }
-        }
+    // Bouton "Afficher la suite" dans la bio
+    document.querySelectorAll('.toggle').forEach(btn=>{
+      btn.addEventListener('click', e=>{
+        e.preventDefault();
+        const id = btn.getAttribute('data-target');
+        const block = document.getElementById(id);
+        block.classList.toggle('expanded');
+        btn.textContent = block.classList.contains('expanded') ? 'Réduire le contenu' : 'Afficher la suite';
       })
     });
   </script>
 </body>
 </html>
-
