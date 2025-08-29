@@ -1,78 +1,246 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Léonore Vanier • Comédienne | Scénariste</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>
-body{margin:0;font-family:Inter, sans-serif;background:#f5f0e6;color:#111;line-height:1.6}
-a{color:#111;text-decoration:none}
-a:hover{text-decoration:underline}
-.container{max-width:980px;margin:auto;padding:18px}
-.hero{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #dcd6cc;padding-bottom:12px}
-.brand{display:flex;flex-direction:column;gap:6px}
-.name{margin:0;font-size:48px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
-.roles{font-size:16px;text-transform:uppercase;color:#555;letter-spacing:.6px}
-.top-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
-.top-nav a{font-size:14px}
-.section{padding:20px 0;border-bottom:1px solid #dcd6cc}
-.section h2{margin:0 0 12px 0;font-size:32px;font-weight:800;text-transform:uppercase}
-.section h2::after{content:"";display:block;width:60px;height:2px;background:#dcd6cc;margin-top:8px}
-ul{list-style:none;padding:0;margin:0}
-li{margin-bottom:6px}
-.kv-list{display:grid}
-.kv{display:grid;grid-template-columns:220px 1fr;padding:10px 0;border-bottom:1px solid #dcd6cc}
-.kv .k{text-transform:uppercase;font-weight:700;letter-spacing:.4px}
-.socials{display:flex;gap:12px;align-items:center}
-.socials img{width:24px;height:24px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
-.gallery img{width:100%;height:auto;border:1px solid #dcd6cc;border-radius:8px;object-fit:cover}
-.actions{display:flex;gap:14px;align-items:center}
-.icon{display:inline-flex;width:26px;height:26px}
-.icon svg{width:100%;height:100%;display:block}
-.gallery{display:grid;gap:18px}
-@media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-.gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
-/* Miniature vidéo (YouTube) */
-.media-grid{display:grid;gap:18px}
-.video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
-.thumb{position:relative;display:block}
-.thumb::before{content:"";display:block;padding-top:56.25%} /* 16:9 */
-.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;border:1px solid #dcd6cc}
-.video-meta{padding:10px}
-.video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
-.meta-row{font-size:13px;color:#555}
-/* --- Adjusted typography (smaller) --- */
-html{font-size:15px}
-body{line-height:1.55}
-.name{font-size:42px}
-.roles{font-size:14px;letter-spacing:.5px}
-.top-nav a{font-size:13px}
-.section h2{font-size:28px}
-.kv .k{font-size:14px}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Léonore Vanier • Comédienne | Scénariste</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body{margin:0;font-family:Inter, sans-serif;background:#f5f0e6;color:#111;line-height:1.6}
+    a{color:#111;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:980px;margin:auto;padding:18px}
+    .hero{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #dcd6cc;padding-bottom:12px}
+    .brand{display:flex;flex-direction:column;gap:6px}
+    .name{margin:0;font-size:48px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
+    .roles{font-size:16px;text-transform:uppercase;color:#555;letter-spacing:.6px}
+    .top-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+    .top-nav a{font-size:14px}
+    .section{padding:20px 0;border-bottom:1px solid #dcd6cc}
+    .section h2{margin:0 0 12px 0;font-size:32px;font-weight:800;text-transform:uppercase}
+    .section h2::after{content:"";display:block;width:60px;height:2px;background:#dcd6cc;margin-top:8px}
+    ul{list-style:none;padding:0;margin:0}
+    li{margin-bottom:6px}
+    .kv-list{display:grid}
+    .kv{display:grid;grid-template-columns:220px 1fr;padding:10px 0;border-bottom:1px solid #dcd6cc}
+    .kv .k{text-transform:uppercase;font-weight:700;letter-spacing:.4px}
+    .socials{display:flex;gap:12px;align-items:center}
+    .socials img{width:24px;height:24px}
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+    .gallery img{width:100%;height:auto;border:1px solid #dcd6cc;border-radius:8px;object-fit:cover}
+    .actions{display:flex;gap:14px;align-items:center}
+  .icon{display:inline-flex;width:26px;height:26px}
+  .icon svg{width:100%;height:100%;display:block}
+  .gallery{display:grid;gap:18px}
+  @media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
+  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+    /* Miniature vidéo (YouTube) */
+  .media-grid{display:grid;gap:18px}
+  .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
+  .thumb{position:relative;display:block}
+  .thumb::before{content:"";display:block;padding-top:56.25%} /* 16:9 */
+  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;border:1px solid #dcd6cc}
+  .video-meta{padding:10px}
+  .video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
+  .meta-row{font-size:13px;color:#555}
+    /* --- Adjusted typography (smaller) --- */
+  html{font-size:15px}
+  body{line-height:1.55}
+  .name{font-size:42px}
+  .roles{font-size:14px;letter-spacing:.5px}
+  .top-nav a{font-size:13px}
+  .section h2{font-size:28px}
+  .kv .k{font-size:14px}
 
+  /* Hide old standalone sections (we'll use a split layout) */
+  #videos, #photos{display:none}
 
-/* Hide old standalone sections (we'll use a split layout) */
-#videos, #photos{display:none}
+  /* Split layout: left column = photos+video, right column = textes/expériences */
+  .split{padding:20px 0;border-bottom:1px solid #dcd6cc}
+  .split-grid{display:grid;gap:18px}
+  @media(min-width:960px){.split-grid{grid-template-columns:520px 1fr}}
+  @media(max-width:959.98px){.split-grid{grid-template-columns:1fr}}
 
+  /* Gallery like reference: 2 colonnes serrées */
+  .gallery{display:grid;gap:16px}
+  @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
+  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
 
-/* Split layout: left column = photos+video, right column = textes/expériences */
-.split{padding:20px 0;border-bottom:1px solid #dcd6cc}
-.split-grid{display:grid;gap:18px}
-@media(min-width:960px){.split-grid{grid-template-columns:520px 1fr}}
-@media(max-width:959.98px){.split-grid{grid-template-columns:1fr}}
+  /* Smaller video card under photos */
+  .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
+  .thumb{position:relative;display:block}
+  .thumb::before{content:"";display:block;padding-top:56.25%}
+  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:22px;line-height:1;border:1px solid #dcd6cc}
+  .video-meta{padding:8px}
+  .video-meta h3{margin:0 0 2px;font-size:15px}
+  .meta-row{font-size:12px;color:#555}
+  </style>
+</head>
+<body>
+  <header class="container hero">
+    <div class="brand">
+      <h1 class="name">Léonore Vanier</h1>
+      <div class="roles">Comédienne | Scénariste</div>
+      <nav class="top-nav">
+        <a href="#biographie">Biographie</a>
+        <a href="#casting">Casting</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#photos">Photos</a>
+        <a href="#experiences">Expériences</a>
+        <a href="#formations">Formations</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="socials">
+      <a href="CV_LeonoreVanier.pdf" target="_blank" title="Télécharger le CV en PDF">📄</a>
+      <a href="https://www.instagram.com/leonorevanier/?igsh=aTh5aG9tc3puZTl6&utm_source=qr" target="_blank" title="Instagram Léonore Vanier">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+      </a>
+    </div>
+    <div class="actions" aria-label="Liens rapides">
+      <a class="icon" href="assets/Leonore_Vanier_CV.pdf" target="_blank" rel="noopener" aria-label="Télécharger le PDF">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 3h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="#111"/><path d="M13 3v5h5" stroke="#111"/><path d="M12 12v6" stroke="#111"/><path d="M9 15l3 3 3-3" stroke="#111"/></svg>
+      </a>
+      <a class="icon" href="https://www.instagram.com/leonorevanier/?igsh=aTh5aG9tc3puZTl6&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram de Léonore Vanier">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#111"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#111"/><circle cx="17.5" cy="6.5" r="1.2" fill="#111"/></svg>
+      </a>
+      <span aria-hidden="true">|</span>
+      <a href="#" aria-label="Langue Française">FR</a> / <a href="#" aria-label="Langue Anglaise">EN</a>
+    </div>
+  </header>
 
+  <main class="container">
+    <section id="biographie" class="section">
+      <h2>Biographie</h2>
+      <p>Comédienne formée au Cours Florent, Léonore Vanier développe une pratique artistique nourrie par le théâtre, le cinéma et l’écriture. Elle explore des personnages intenses et des univers variés, toujours animée par un besoin d’expression et de transmission.</p>
+    </section>
 
-/* Gallery like reference: 2 colonnes serrées */
-.gallery{display:grid;gap:16px}
-@media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-.gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-.gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+    <section id="casting" class="section">
+      <h2>Informations Casting</h2>
+      <div class="kv-list">
+        <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue sans accent), Espagnol (avancé), Coréen (notions), Français (maternelle)</div></div>
+        <div class="kv"><div class="k">Danses</div><div>Pompons girls compétition, Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
+        <div class="kv"><div class="k">Musique</div><div>Chant (Alto)</div></div>
+        <div class="kv"><div class="k">Sport</div><div>Athlétisme (semi-marathon), Ski (très bon niveau), Natation (bon niveau)</div></div>
+        <div class="kv"><div class="k">Hobbies</div><div>Couture, Poterie, Modèle photo</div></div>
+        <div class="kv"><div class="k">Taille</div><div>169 cm</div></div>
+        <div class="kv"><div class="k">Permis</div><div>B</div></div>
+      </div>
+    </section>
+
+    <section id="videos" class="section">
+      <h2>Bande démo</h2>
+      <div class="media-grid">
+        <article class="video-card">
+          <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo sur YouTube">
+            <img src="https://img.youtube.com/vi/2cULRf3Run4/maxresdefault.jpg" alt="Bande démo — miniature" onerror="this.src='https://img.youtube.com/vi/2cULRf3Run4/hqdefault.jpg'">
+            <span class="play" aria-hidden="true">▶</span>
+          </a>
+          <div class="video-meta">
+            <h3>Bande démo</h3>
+            <div class="meta-row">YouTube</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="photos" class="section">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <a href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait1.jpg</text></svg>'"></a>
+        <a href="photos/portrait2.jpg" target="_blank" aria-label="Portrait 2"><img src="photos/portrait2.jpg" alt="Portrait 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait2.jpg</text></svg>'"></a>
+        <a href="photos/portrait3.jpg" target="_blank" aria-label="Portrait 3"><img src="photos/portrait3.jpg" alt="Portrait 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait3.jpg</text></svg>'"></a>
+        <a href="photos/portrait4.jpg" target="_blank" aria-label="Portrait 4"><img src="photos/portrait4.jpg" alt="Portrait 4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait4.jpg</text></svg>'"></a>
+        <a href="photos/portrait5.jpg" target="_blank" aria-label="Portrait 5"><img src="photos/portrait5.jpg" alt="Portrait 5" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait5.jpg</text></svg>'"></a>
+        <a href="photos/portrait6.jpg" target="_blank" aria-label="Portrait 6"><img src="photos/portrait6.jpg" alt="Portrait 6" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait6.jpg</text></svg>'"></a>
+      </div>
+      <p style="margin-top:10px"><a href="#" aria-label="Voir toutes les photos">Voir toutes les photos</a></p>
+    </section>
+
+    <section id="work" class="section split">
+      <div class="split-grid">
+        <!-- Colonne gauche : Photos en premier, vidéo plus bas et plus petite -->
+        <aside class="media-rail">
+          <h2 id="photos">Photos</h2>
+          <div class="gallery">
+            <a href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1"></a>
+            <a href="photos/portrait2.jpg" target="_blank" aria-label="Portrait 2"><img src="photos/portrait2.jpg" alt="Portrait 2"></a>
+            <a href="photos/portrait3.jpg" target="_blank" aria-label="Portrait 3"><img src="photos/portrait3.jpg" alt="Portrait 3"></a>
+            <a href="photos/portrait4.jpg" target="_blank" aria-label="Portrait 4"><img src="photos/portrait4.jpg" alt="Portrait 4"></a>
+            <a href="photos/portrait5.jpg" target="_blank" aria-label="Portrait 5"><img src="photos/portrait5.jpg" alt="Portrait 5"></a>
+            <a href="photos/portrait6.jpg" target="_blank" aria-label="Portrait 6"><img src="photos/portrait6.jpg" alt="Portrait 6"></a>
+          </div>
+
+          <h2 style="margin-top:18px">Bande démo</h2>
+          <article class="video-card">
+            <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo">
+              <img src="https://img.youtube.com/vi/2cULRf3Run4/hqdefault.jpg" alt="Bande démo — miniature">
+              <span class="play" aria-hidden="true">▶</span>
+            </a>
+            <div class="video-meta">
+              <h3>Bande démo</h3>
+              <div class="meta-row">YouTube</div>
+            </div>
+          </article>
+        </aside>
+
+        <!-- Colonne droite : Expériences / textes -->
+        <div class="text-rail">
+          <h2>Théâtre</h2>
+          <ul>
+            <li><strong>2025</strong> – LE BAIN – Mise en scène Clara Kermarec – Théâtre de La Croisée des Chemins – Rôle principal</li>
+            <li><strong>2025</strong> – TRISTESSE ET JOIE DANS LA VIE DES GIRAFES – Mise en scène Iona Vavasseur – Rôle Judy Garland</li>
+            <li><strong>2025</strong> – LE LEGS – Mise en scène Alain de Bock – Théâtre A LA FOLIE</li>
+            <li><strong>2024</strong> – LE MARIAGE DE FIGARO – Mise en scène Sophie Lecarpentier – Rôle La Comtesse</li>
+            <li><strong>2022</strong> – LA BONNE ÂME DU SE-TCHOUAN – Mise en scène Xavier Bazin – Rôle La Femme</li>
+            <li><strong>2022</strong> – RING – Mise en scène Frédérique Auger – Théâtre Clavel – Rôle La Femme</li>
+          </ul>
+
+          <h2 style="margin-top:16px">Cinéma – Courts métrages</h2>
+          <ul>
+            <li><strong>2025</strong> – J’EN TROUVERAI UN AUTRE – Réal. Louis Faudais – Rôle principal (comédie)</li>
+            <li><strong>2025</strong> – LE DAHUT – Réal. Léonore Vanier – Rôle principal (comédie)</li>
+            <li><strong>2025</strong> – MASTERPROF – Réal. Jef Yomby – Opango – Rôle principal (comédie)</li>
+          </ul>
+
+          <h2 style="margin-top:16px">Télévision</h2>
+          <ul>
+            <li><strong>2025</strong> – VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal</li>
+            <li><strong>2024</strong> – ENGIE Solutions – Réal. 714 Prod – Rôle principal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="formations" class="section">
+      <h2>Formations</h2>
+      <ul>
+        <li><strong>2025</strong> – Stage « Transe » avec Valérie De Dietrich, Stage Systema avec Laurent Joly</li>
+        <li><strong>2024-25</strong> – Cours Florent : Stage Jeu caméra (Jersy Klesyk, Sophie Le Carpentier), Stage Masque (Khadija El Mahdi), Improvisation (David Garel)</li>
+        <li><strong>2023-24</strong> – Cours Florent : Année 2 avec Xavier Bazin</li>
+        <li><strong>2022-23</strong> – Cours Florent : Année 1 avec Olivier Augrond</li>
+        <li><strong>2022</strong> – Diplôme d’ingénieur, National University of Singapore</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Téléphone : [numéro à insérer]<br>Email : [adresse mail à insérer]<br>Basée à Paris, Île-de-France</p>
+      <p><a href="CV_LeonoreVanier.pdf" target="_blank">Télécharger le CV en PDF</a></p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>© <span id="year"></span> Léonore Vanier</small>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+</body>
 </html>
