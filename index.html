@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body{margin:0;font-family:Inter, sans-serif;background:#f5f0e6;color:#111;line-height:1.6}
+    body{margin:0;font-family:Inter, sans-serif;background:#f8f6f0;color:#111;line-height:1.6}
     a{color:#111;text-decoration:none}
     a:hover{text-decoration:underline}
     .container{max-width:980px;margin:auto;padding:18px}
@@ -28,7 +28,14 @@
     .kv .k{text-transform:uppercase;font-weight:700;letter-spacing:.4px}
     .socials{display:flex;gap:12px;align-items:center}
     .socials img{width:24px;height:24px}
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+    .gallery{display:grid;gap:16px}
+  @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
+  .gallery a.featured{grid-column:1 / -1}
+  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+  /* autres vignettes réduites visuellement à ~60% */
+  .gallery a:not(.featured) img{width:60%;height:auto;aspect-ratio:auto;margin:0 auto;padding:8px}
     .gallery img{width:100%;height:auto;border:1px solid #dcd6cc;border-radius:8px;object-fit:cover}
     .actions{display:flex;gap:14px;align-items:center}
   .icon{display:inline-flex;width:26px;height:26px}
@@ -49,16 +56,18 @@
   .video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
   .meta-row{font-size:13px;color:#555}
     /* --- Adjusted typography (smaller) --- */
-  html{font-size:15px}
+  html{font-size:14px}
   body{line-height:1.55}
-  .name{font-size:42px}
-  .roles{font-size:14px;letter-spacing:.5px}
-  .top-nav a{font-size:13px}
-  .section h2{font-size:28px}
+  .name{font-size:38px}
+  .roles{font-size:13px;letter-spacing:.5px}
+  .top-nav a{font-size:12px}
+  .section h2{font-size:24px}
   .kv .k{font-size:14px}
 
   /* Hide old standalone sections (we'll use a split layout) */
   #videos, #photos{display:none}
+  /* Hide legacy sections so split starts at Bio */
+  #biographie, #casting{display:none} 
 
   /* Split layout: left column = photos+video, right column = textes/expériences */
   .split{padding:20px 0;border-bottom:1px solid #dcd6cc}
@@ -90,7 +99,7 @@
       <h1 class="name">Léonore Vanier</h1>
       <div class="roles">Comédienne | Scénariste</div>
       <nav class="top-nav">
-        <a href="#biographie">Biographie</a>
+        <a href="#bio">Bio</a>
         <a href="#casting">Casting</a>
         <a href="#videos">Vidéos</a>
         <a href="#photos">Photos</a>
@@ -155,7 +164,7 @@
     <section id="photos" class="section">
       <h2>Photos</h2>
       <div class="gallery">
-        <a href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait1.jpg</text></svg>'"></a>
+            <a class="featured" href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait1.jpg</text></svg>'"></a>
         <a href="photos/portrait2.jpg" target="_blank" aria-label="Portrait 2"><img src="photos/portrait2.jpg" alt="Portrait 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait2.jpg</text></svg>'"></a>
         <a href="photos/portrait3.jpg" target="_blank" aria-label="Portrait 3"><img src="photos/portrait3.jpg" alt="Portrait 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait3.jpg</text></svg>'"></a>
         <a href="photos/portrait4.jpg" target="_blank" aria-label="Portrait 4"><img src="photos/portrait4.jpg" alt="Portrait 4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait4.jpg</text></svg>'"></a>
@@ -194,7 +203,22 @@
 
         <!-- Colonne droite : Expériences / textes -->
         <div class="text-rail">
-          <h2>Théâtre</h2>
+          <h2 id="bio">Bio</h2>
+          <p>Comédienne formée au Cours Florent, Léonore Vanier développe une pratique artistique nourrie par le théâtre, le cinéma et l’écriture. Elle explore des personnages intenses et des univers variés, toujours animée par un besoin d’expression et de transmission.</p>
+
+          <h2 style="margin-top:16px">Informations casting</h2>
+          <div class="kv-list" id="casting-list">
+            <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue sans accent), Espagnol (avancé), Coréen (notions), Français (maternelle)</div></div>
+            <div class="kv"><div class="k">Danses</div><div>Pompons girls compétition, Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
+            <div class="kv"><div class="k">Musique</div><div>Chant (Alto)</div></div>
+            <div class="kv"><div class="k">Sport</div><div>Athlétisme (semi-marathon), Ski (très bon niveau), Natation (bon niveau)</div></div>
+            <div class="kv"><div class="k">Hobbies</div><div>Couture, Poterie, Modèle photo</div></div>
+            <div class="kv"><div class="k">Taille</div><div>169 cm</div></div>
+            <div class="kv"><div class="k">Permis</div><div>B</div></div>
+          </div>
+          <p><a href="#" class="toggle-casting" data-expanded="false">Afficher plus</a></p>
+
+          <h2 style="margin-top:16px">Théâtre</h2>
           <ul>
             <li><strong>2025</strong> – LE BAIN – Mise en scène Clara Kermarec – Théâtre de La Croisée des Chemins – Rôle principal</li>
             <li><strong>2025</strong> – TRISTESSE ET JOIE DANS LA VIE DES GIRAFES – Mise en scène Iona Vavasseur – Rôle Judy Garland</li>
@@ -241,6 +265,24 @@
   <footer class="container">
     <small>© <span id="year"></span> Léonore Vanier</small>
   </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Casting: show only first 3 lines by default
+    (function(){
+      const list = document.getElementById('casting-list');
+      if(!list) return;
+      const rows = Array.from(list.querySelectorAll('.kv'));
+      const toggle = document.querySelector('.toggle-casting');
+      function apply(){
+        const expanded = list.classList.contains('expanded');
+        rows.forEach((row, i)=>{ row.style.display = (expanded || i < 3) ? 'grid' : 'none'; });
+        if(toggle){ toggle.textContent = expanded ? 'Afficher moins' : 'Afficher plus'; }
+      }
+      if(toggle){
+        toggle.addEventListener('click', (e)=>{ e.preventDefault(); list.classList.toggle('expanded'); apply(); });
+      }
+      apply();
+    })();
+  </script>
 </body>
 </html>
