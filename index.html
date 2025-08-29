@@ -7,89 +7,86 @@
   <meta name="description" content="Site officiel — Comédien·ne / Scénariste : bande démo, photos, biographie, informations casting, filmographie, contact." />
   <style>
     :root{
-      --bg:#0f0f10; /* très sombre */
-      --fg:#f3f3f4; /* texte principal */
-      --muted:#bdbec2; /* texte secondaire */
-      --accent:#ffffff; /* liens/boutons – volontairement sobre */
-      --card:#16171a; /* blocs */
-      --border:#26272b;
-      --maxw:1100px; /* largeur maxi desktop */
+      --bg:#000000;
+      --fg:#ffffff;
+      --muted:#c9c9c9;
+      --accent:#ffffff;
+      --card:#0b0b0b;
+      --border:#262626;
+      --maxw:1050px;
     }
 
     html,body{height:100%}
     body{
       margin:0;
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+      font:16px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,sans-serif;
       color:var(--fg);
       background:var(--bg);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
+      letter-spacing:.1px;
     }
 
+    *{box-sizing:border-box}
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Layout principal */
-    .container{max-width:var(--maxw);margin-inline:auto;padding:24px}
-    .site-grid{display:grid;gap:24px}
+    .container{max-width:var(--maxw);margin-inline:auto;padding:20px}
+    .site-grid{display:grid;gap:18px}
 
-    /* Header / hero */
-    .hero{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px;border-bottom:1px solid var(--border)}
-    .brand{display:flex;flex-direction:column}
-    .name{font-weight:800;letter-spacing:.3px;margin:0;font-size:clamp(22px,4.8vw,40px)}
-    .roles{color:var(--muted);margin-top:2px}
+    /* HEADER */
+    .hero{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-block:6px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;flex-direction:column;gap:8px}
+    .name{margin:0;font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:clamp(20px,4.5vw,34px)}
+    .roles{color:var(--muted);margin-top:-2px}
+    .lang-switch{display:flex;gap:8px;align-items:center}
+    .pill{border:1px solid var(--border);border-radius:999px;padding:4px 10px;color:var(--muted);font-size:14px}
 
-    .lang-switch{display:flex;gap:10px;align-items:center}
-    .pill{border:1px solid var(--border);border-radius:999px;padding:6px 10px;color:var(--muted)}
+    /* NAV (liens rapides comme sur claraines) */
+    .top-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+    .top-nav a{padding:5px 10px;border:1px solid var(--border);border-radius:8px;font-size:14px}
 
-    /* Navigation simple (Liens / Sections) */
-    .top-nav{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
-    .top-nav a{padding:6px 10px;border:1px solid var(--border);border-radius:10px}
+    /* SECTIONS */
+    .section{background:transparent;border:1px solid var(--border);border-radius:12px;padding:14px}
+    .section h2{margin:0 0 10px 0;font-size:18px;font-weight:700;text-transform:none}
 
-    /* Grilles des sections */
-    .section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
-    .section h2{margin:0 0 12px 0;font-size:20px}
+    .media-grid{display:grid;gap:10px}
+    .video-card,.photo{background:#0a0a0a;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    .thumb{aspect-ratio:16/9;background:#151515;display:grid;place-items:center;font-size:13px;color:var(--muted)}
+    .video-meta{padding:8px}
+    .video-meta h3{margin:0 0 4px 0;font-size:15px}
+    .meta-row{font-size:12px;color:var(--muted)}
 
-    .media-grid{display:grid;gap:14px}
-    .video-card,.photo{background:#0c0d10;border:1px solid var(--border);border-radius:12px;overflow:hidden}
-    .thumb{aspect-ratio:16/9;background:#1d1f25;display:grid;place-items:center;font-size:13px;color:var(--muted)}
-    .video-meta{padding:10px}
-    .video-meta h3{margin:0 0 6px 0;font-size:16px}
-    .meta-row{font-size:13px;color:var(--muted)}
-
-    .gallery{display:grid;gap:10px}
+    .gallery{display:grid;gap:8px}
     .gallery .photo{aspect-ratio:4/5}
 
-    .two-col{display:grid;gap:24px}
+    .two-col{display:grid;gap:18px}
 
-    /* Blocs de texte */
     .text p{margin:0}
-    .text .more{display:none;margin-top:10px}
+    .text .more{display:none;margin-top:8px}
     .text.expanded .more{display:block}
-    .toggle{display:inline-block;margin-top:10px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;color:var(--muted)}
+    .toggle{display:inline-block;margin-top:8px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:14px}
 
-    /* Listes casting / filmographie */
-    .kv-list{display:grid;gap:8px}
-    .kv-list .kv{display:grid;grid-template-columns:160px 1fr;gap:8px}
+    .kv-list{display:grid;gap:6px}
+    .kv-list .kv{display:grid;grid-template-columns:150px 1fr;gap:8px}
     .kv .k{color:var(--muted)}
 
     .credit-list{display:grid;gap:8px}
-    .credit{padding:10px;border:1px solid var(--border);border-radius:10px}
+    .credit{padding:8px;border:1px solid var(--border);border-radius:10px}
     .credit .title{font-weight:600}
     .credit .role{color:var(--muted)}
 
-    /* Footer */
-    footer{margin-top:24px;padding:24px;border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+    footer{margin-top:18px;padding:18px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
-    /* RESPONSIVE */
-    @media (min-width: 900px){
-      .site-grid{grid-template-columns: 1fr 360px}
+    /* LAYOUT responsive calqué sur claraines.fr */
+    @media (min-width: 960px){
+      .site-grid{grid-template-columns: 1fr 380px}
       .two-col{grid-template-columns:1fr 1fr}
       .media-grid{grid-template-columns: 1fr 1fr}
       .gallery{grid-template-columns: repeat(5,1fr)}
     }
 
-    @media (max-width: 899px){
+    @media (max-width: 959px){
       .site-grid{grid-template-columns: 1fr}
       .media-grid{grid-template-columns:1fr}
       .gallery{grid-template-columns: repeat(3,1fr)}
