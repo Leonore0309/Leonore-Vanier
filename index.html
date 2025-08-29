@@ -4,132 +4,95 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Nom Prénom • Comédien·ne • Scénariste</title>
-  <meta name="description" content="Site officiel — Comédien·ne / Scénariste : bande démo, photos, biographie, informations casting, filmographie, contact." />
-  <!-- Pixel‑locking: police web figée pour un rendu identique -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ====== Pixel Locking Reset ====== */
-    html,body{height:100%}
-    html{box-sizing:border-box}
-    *,*::before,*::after{box-sizing:inherit}
-    /* Neutraliser les styles par défaut pour une métrique stable */
-    h1,h2,h3,h4,h5,h6,p,ul,ol,figure{margin:0;padding:0}
-
     :root{
-      /* Couleurs (fond beige demandé) */
-      --bg:#f5f0e6;         /* beige doux */
-      --card:#ffffff;       /* cartes blanches pour contraste */
-      --fg:#111111;         /* texte principal noir doux */
-      --muted:#5e5e5e;      /* texte secondaire */
-      --border:#e3ded5;     /* lignes fines dans l'esprit du site */
-      --accent:#111111;     /* liens noirs */
-
-      /* Grille/verrous */
-      --container:980px;    /* largeur fixe comme le ref */
-      --sidebar:360px;      /* colonne droite */
-      --gap:18px;           /* gouttière globale */
-      --radius-lg:12px;     /* arrondis cohérents */
-      --radius-md:10px;
+      --bg:#f5f0e6;
+      --card:#ffffff;
+      --fg:#111111;
+      --muted:#5e5e5e;
+      --border:#dcd6cc;
+      --accent:#111111;
+      --container:980px;
+      --sidebar:360px;
+      --gap:18px;
     }
 
+    html,body{height:100%;margin:0;padding:0}
     body{
-      margin:0;
       background:var(--bg);
       color:var(--fg);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      font-size:16px;
-      line-height:1.6; /* verrous */
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-size:16px;line-height:1.6;
       -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      text-rendering:optimizeLegibility;
-      letter-spacing:.1px;
     }
-
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* ====== Layout ====== */
-    .container{max-width:var(--container);margin-inline:auto;padding-left:18px;padding-right:18px;padding-top:18px;padding-bottom:18px}
+    .container{max-width:var(--container);margin-inline:auto;padding:18px}
     .site-grid{display:grid;gap:var(--gap)}
 
-    /* ====== Header ====== */
-    .hero{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding-block:8px;border-bottom:1px solid var(--border)}
-    .brand{display:flex;flex-direction:column;gap:6px}
-    .name{margin:0;font-weight:800;letter-spacing:.6px;text-transform:uppercase;font-size:34px;line-height:1.15}
-    .roles{color:var(--muted);font-size:15px}
-    .lang-switch{display:flex;gap:8px;align-items:center}
-    .pill{border:1px solid var(--border);border-radius:999px;padding:4px 10px;color:var(--muted);font-size:14px}
+    /* Header */
+    .hero{display:flex;align-items:flex-start;justify-content:space-between;padding-block:12px;border-bottom:1px solid var(--border)}
+    .brand{display:flex;flex-direction:column;align-items:flex-start}
+    .name{margin:0;font-weight:800;text-transform:uppercase;font-size:48px;letter-spacing:.5px;line-height:1.1}
+    .roles{color:var(--muted);font-size:16px;text-transform:uppercase;letter-spacing:.8px}
+    .top-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .top-nav a{font-size:14px;padding:4px 8px}
 
-    /* Nav courte */
-    .top-nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-    .top-nav a{padding:5px 10px;border:1px solid var(--border);border-radius:8px;font-size:14px}
-
-    /* ====== Sections (verrouillées) ====== */
-    .section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px}
-    .section h2{margin:0 0 10px 0;font-size:18px;font-weight:700}
+    /* Sections */
+    .section{background:transparent;padding:14px 0;border-bottom:1px solid var(--border)}
+    .section h2{margin:0 0 12px 0;font-size:44px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;line-height:1.1}
+    .section h2::after{content:"";display:block;width:60px;height:2px;background:var(--border);margin-top:10px}
 
     /* Vidéos */
-    .media-grid{display:grid;gap:10px}
-    .video-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden}
-    .thumb{width:100%;aspect-ratio:16/9;background:#f0ece3;display:grid;place-items:center;font-size:13px;color:var(--muted)}
-    .video-meta{padding:8px}
-    .video-meta h3{margin:0 0 4px 0;font-size:15px;line-height:1.3}
-    .meta-row{font-size:12px;color:var(--muted)}
+    .media-grid{display:grid;gap:18px}
+    .video-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+    .thumb{position:relative;width:100%}
+    .thumb::before{content:"";display:block;padding-top:56.25%}
+    .video-meta{padding:10px}
+    .video-meta h3{margin:0 0 4px 0;font-size:16px;font-weight:700;line-height:1.3}
+    .meta-row{font-size:13px;color:var(--muted)}
 
     /* Galerie */
-    .gallery{display:grid;gap:8px}
-    .gallery .photo{display:block;background:#f0ece3;border:1px solid var(--border);border-radius:var(--radius-md);aspect-ratio:4/5;overflow:hidden}
+    .gallery{display:grid;gap:18px}
+    .gallery .photo{display:block;background:#eee;border:1px solid var(--border);border-radius:8px;aspect-ratio:4/5;overflow:hidden}
 
-    /* 2 colonnes internes "Crédits" */
-    .two-col{display:grid;gap:18px}
+    /* Casting */
+    .kv-list{display:grid}
+    .kv{display:grid;grid-template-columns:220px 1fr;gap:0;padding:14px 0;border-bottom:1px solid var(--border)}
+    .kv:first-child{padding-top:0}
+    .kv:last-child{border-bottom:0}
+    .kv .k{color:var(--fg);text-transform:uppercase;font-weight:700;letter-spacing:.4px;font-size:15px}
 
-    /* Texte/Bio */
-    .text p{margin:0}
-    .text .more{display:none;margin-top:8px}
-    .text.expanded .more{display:block}
-    .toggle{display:inline-block;margin-top:8px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:14px}
-
-    /* Infos casting (liste clé/valeur) */
-    .kv-list{display:grid;gap:6px}
-    .kv{display:grid;grid-template-columns:150px 1fr;gap:8px}
-    .kv .k{color:var(--muted)}
-
-    /* Crédits/filmographie */
+    /* Crédits */
     .credit-list{display:grid;gap:8px}
-    .credit{padding:8px;border:1px solid var(--border);border-radius:var(--radius-md);background:#fff}
+    .credit{padding:6px 0;border-bottom:1px solid var(--border)}
     .credit .title{font-weight:600}
     .credit .role{color:var(--muted)}
 
     footer{margin-top:18px;padding:18px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
-    /* ====== Breakpoints verrouillés ====== */
-    @media (min-width: 960px){
-      .site-grid{grid-template-columns: 1fr var(--sidebar)}
-      .two-col{grid-template-columns:1fr 1fr}
-      .media-grid{grid-template-columns: 1fr 1fr}
-      .gallery{grid-template-columns: repeat(5,1fr)}
+    @media(min-width:960px){
+      .site-grid{grid-template-columns:1fr var(--sidebar)}
+      .media-grid{grid-template-columns:1fr 1fr}
+      .gallery{grid-template-columns:repeat(3,1fr)}
     }
-    @media (max-width: 959.98px){
-      .site-grid{grid-template-columns: 1fr}
-      .media-grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns: repeat(3,1fr)}
-      .name{font-size:28px}
-    }
-
-    /* Accessibilité/consistance mouvements */
-    @media (prefers-reduced-motion: reduce){
-      *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;scroll-behavior:auto !important}
+    @media(max-width:959.98px){
+      .site-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .name{font-size:36px}
     }
   </style>
 </head>
 <body>
-  <header class="container hero" role="banner">
+  <header class="container hero">
     <div class="brand">
       <h1 class="name">Nom PRÉNOM</h1>
-      <div class="roles">Comédien·ne • Scénariste</div>
-      <nav class="top-nav" aria-label="Navigation principale">
+      <div class="roles">Comédien·ne | Scénariste</div>
+      <nav class="top-nav">
         <a href="#liens">Liens</a>
         <a href="#videos">Vidéos</a>
         <a href="#photos">Photos</a>
@@ -137,156 +100,75 @@
         <a href="#casting">Infos casting</a>
         <a href="#credits">Filmographie</a>
         <a href="#contact">Contact</a>
-        <a href="#audio">Audio</a>
       </nav>
     </div>
-    <div class="lang-switch" aria-label="Langues">
-      <span class="pill">fr</span>
-      <a class="pill" href="#" lang="en" hreflang="en" aria-label="Switch to English">en</a>
+    <div class="lang-switch">
+      <a class="pill" href="#" lang="fr">FR</a>
+      <a class="pill" href="#" lang="en">EN</a>
     </div>
   </header>
 
-  <main class="container site-grid" id="main" role="main">
-    <!-- Colonne principale -->
-    <section id="videos" class="section" aria-labelledby="videos-title">
-      <h2 id="videos-title">Bande démo</h2>
-      <div class="media-grid">
-        <!-- Carte vidéo 1 (Bande démo principale) -->
-        <article class="video-card">
-          <a class="thumb" href="https://youtu.be/xxxxxxxx" target="_blank" rel="noopener">Pré-aperçu vidéo 16:9</a>
-          <div class="video-meta">
-            <h3>Bande démo 2025</h3>
-            <div class="meta-row">Durée : 4:14 • Vues 2 676</div>
-          </div>
-        </article>
-        <!-- Autres vidéos -->
-        <article class="video-card">
-          <a class="thumb" href="https://youtu.be/xxxxxxxx" target="_blank" rel="noopener">Pré-aperçu vidéo 16:9</a>
-          <div class="video-meta">
-            <h3>Bande démo 2023 V1b</h3>
-            <div class="meta-row">Durée : 3:33 • Vues 1 419</div>
-          </div>
-        </article>
-      </div>
-      <p style="margin-top:12px"><a href="#" aria-label="Voir toutes les vidéos">Toutes les vidéos</a></p>
+  <main class="container site-grid">
+    <section id="biographie" class="section">
+      <h2>Biographie</h2>
+      <p>Curieux du monde qui m'entoure, jouer la comédie est pour moi un besoin d'expression...</p>
     </section>
 
-    <section id="photos" class="section" aria-labelledby="photos-title">
-      <h2 id="photos-title">Portraits — 10 photos</h2>
-      <div class="gallery">
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-        <a class="photo" href="#"> </a>
-      </div>
-      <p style="margin-top:12px"><a href="#" aria-label="Voir toutes les photos">Voir toutes les photos</a></p>
-    </section>
-
-    <!-- Colonne latérale (droite) -->
-    <aside class="section" id="biographie" aria-labelledby="bio-title">
-      <h2 id="bio-title">Biographie</h2>
-      <div class="text" id="bio-block">
-        <p>Curieux·se du monde, jouer la comédie est pour moi un besoin d\'expression… (votre texte).</p>
-        <div class="more">
-          <p>Paragraphe complémentaire affiché en cliquant sur « Afficher la suite ».</p>
-        </div>
-        <a href="#" class="toggle" data-target="bio-block">Afficher la suite</a>
-      </div>
-    </aside>
-
-    <aside class="section" id="casting" aria-labelledby="casting-title">
-      <h2 id="casting-title">Informations casting</h2>
+    <aside id="casting" class="section">
+      <h2>Informations casting</h2>
       <div class="kv-list">
         <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue) | Espagnol (bilingue)</div></div>
-        <div class="kv"><div class="k">Danses</div><div>Salsa (bon niveau)</div></div>
+        <div class="kv"><div class="k">Danses</div><div>Niveau bon : Salsa</div></div>
         <div class="kv"><div class="k">Permis</div><div>Voiture</div></div>
-        <div class="kv"><div class="k">Divers</div><div>Boxe thaï, Ski (patinettes), Gymnastique</div></div>
-      </div>
-
-      <h3 style="margin:16px 0 8px 0">Caractéristiques physiques</h3>
-      <div class="kv-list">
-        <div class="kv"><div class="k">Taille</div><div>1,69 m</div></div>
-        <div class="kv"><div class="k">Poids</div><div>54 kg</div></div>
-        <div class="kv"><div class="k">Cheveux</div><div>Bruns | Longs | Ondulés</div></div>
-        <div class="kv"><div class="k">Yeux</div><div>Marron</div></div>
-        <div class="kv"><div class="k">Mensurations</div><div>85 – 67 – 98</div></div>
-        <div class="kv"><div class="k">Pointure</div><div>38</div></div>
+        <div class="kv"><div class="k">Renseignements complémentaires</div><div>Galop 1, Ski, Gymnastique, Boxe Thaï</div></div>
       </div>
     </aside>
 
-    <section class="section two-col" id="credits" aria-labelledby="credits-title">
-      <div>
-        <h2 id="credits-title">Court métrage</h2>
-        <div class="credit-list">
-          <div class="credit">
-            <div class="title">Rencontre(s)</div>
-            <div class="role">Rôle — Réal. Badrane Siby</div>
+    <section id="videos" class="section">
+      <h2>Vidéos</h2>
+      <div class="media-grid">
+        <article class="video-card">
+          <a class="thumb"></a>
+          <div class="video-meta">
+            <h3>Bande démo 2025</h3>
+            <div class="meta-row">Durée : 4:14</div>
           </div>
-          <div class="credit">
-            <div class="title">Je vais bien, ne t\'en fais pas</div>
-            <div class="role">Rôle — Réal. Louise Ferauge</div>
+        </article>
+        <article class="video-card">
+          <a class="thumb"></a>
+          <div class="video-meta">
+            <h3>Autre extrait</h3>
+            <div class="meta-row">Durée : 2:30</div>
           </div>
-        </div>
-      </div>
-      <div>
-        <h2>Réalisation & Écriture</h2>
-        <div class="credit-list">
-          <div class="credit">
-            <div class="title">Sombras de Sal (2025) — Réalisation</div>
-            <div class="role">Court métrage — Drame</div>
-          </div>
-          <div class="credit">
-            <div class="title">Spleen (2024) — Écriture</div>
-            <div class="role">Long métrage — Drame / Suspense</div>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="audio" class="section" aria-labelledby="audio-title">
-      <h2 id="audio-title">Audio</h2>
-      <p>Ajoutez ici un lecteur ou des liens audio (SoundCloud, MP3). Exemple : <a href="#">Bande démo voix-off</a>.</p>
+    <section id="photos" class="section">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <a class="photo"></a>
+        <a class="photo"></a>
+        <a class="photo"></a>
+      </div>
     </section>
 
-    <section id="liens" class="section" aria-labelledby="links-title">
-      <h2 id="links-title">Liens</h2>
-      <p>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a> ·
-        <a href="#" target="_blank" rel="noopener">IMDb</a> ·
-        <a href="#" target="_blank" rel="noopener">YouTube</a>
-      </p>
+    <section id="credits" class="section">
+      <h2>Court métrage</h2>
+      <div class="credit-list">
+        <div class="credit"><div class="title">Rencontre(s)</div><div class="role">Badrane Siby – Photographe</div></div>
+      </div>
     </section>
 
-    <section id="contact" class="section" aria-labelledby="contact-title">
-      <h2 id="contact-title">Contact</h2>
-      <p>Représentation / Booking : <a href="mailto:agent@exemple.com">agent@exemple.com</a><br/>Direct : <a href="mailto:votre.email@exemple.com">votre.email@exemple.com</a></p>
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>Agent : <a href="mailto:agent@exemple.com">agent@exemple.com</a></p>
     </section>
   </main>
 
   <footer class="container">
-    <small>© <span id="year"></span> Nom Prénom — Site administré par Vous-même • Réalisé avec HTML/CSS (hébergement GitHub Pages).</small>
+    <small>© <span id="year"></span> Nom Prénom</small>
   </footer>
-
-  <script>
-    // Année automatique
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Bouton "Afficher la suite" dans la bio
-    document.querySelectorAll('.toggle').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        e.preventDefault();
-        const id = btn.getAttribute('data-target');
-        const block = document.getElementById(id);
-        block.classList.toggle('expanded');
-        btn.textContent = block.classList.contains('expanded') ? 'Réduire le contenu' : 'Afficher la suite';
-      })
-    });
-  </script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear()</script>
 </body>
 </html>
