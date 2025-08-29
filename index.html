@@ -91,17 +91,22 @@
   .video-meta{padding:8px}
   .video-meta h3{margin:0 0 2px;font-size:15px}
   .meta-row{font-size:12px;color:#555}
+    /* patches overrides */
+  .gallery a.featured{grid-column:1 / -1}
+  .gallery a:not(.featured) img{width:100% !important;padding:0 !important}
+  .contact-mini{font-size:12px;color:#666;margin-top:4px}
   </style>
 </head>
 <body>
   <header class="container hero">
     <div class="brand">
       <h1 class="name">Léonore Vanier</h1>
-      <div class="roles">Comédienne | Scénariste</div>
-      <nav class="top-nav">
+      $1
+      <div class="contact-mini">Tél&nbsp;: [numéro à insérer] • Email&nbsp;: [adresse mail à insérer]</div>
+      $2>
         <a href="#bio">Bio</a>
         <a href="#casting">Casting</a>
-        <a href="#videos">Vidéos</a>
+        <a href="#reel">Vidéos</a>
         <a href="#photos">Photos</a>
         <a href="#experiences">Expériences</a>
         <a href="#formations">Formations</a>
@@ -122,65 +127,18 @@
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#111"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#111"/><circle cx="17.5" cy="6.5" r="1.2" fill="#111"/></svg>
       </a>
       <span aria-hidden="true">|</span>
-      <a href="#" aria-label="Langue Française">FR</a> / <a href="#" aria-label="Langue Anglaise">EN</a>
+      <a href="#" id="lang-fr" aria-label="Langue Française">FR</a> / <a href="#" id="lang-en" aria-label="Langue Anglaise">EN</a>
     </div>
   </header>
 
   <main class="container">
-    <section id="biographie" class="section">
-      <h2>Biographie</h2>
-      <p>Comédienne formée au Cours Florent, Léonore Vanier développe une pratique artistique nourrie par le théâtre, le cinéma et l’écriture. Elle explore des personnages intenses et des univers variés, toujours animée par un besoin d’expression et de transmission.</p>
-    </section>
-
-    <section id="casting" class="section">
-      <h2>Informations Casting</h2>
-      <div class="kv-list">
-        <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue sans accent), Espagnol (avancé), Coréen (notions), Français (maternelle)</div></div>
-        <div class="kv"><div class="k">Danses</div><div>Pompons girls compétition, Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
-        <div class="kv"><div class="k">Musique</div><div>Chant (Alto)</div></div>
-        <div class="kv"><div class="k">Sport</div><div>Athlétisme (semi-marathon), Ski (très bon niveau), Natation (bon niveau)</div></div>
-        <div class="kv"><div class="k">Hobbies</div><div>Couture, Poterie, Modèle photo</div></div>
-        <div class="kv"><div class="k">Taille</div><div>169 cm</div></div>
-        <div class="kv"><div class="k">Permis</div><div>B</div></div>
-      </div>
-    </section>
-
-    <section id="videos" class="section">
-      <h2>Bande démo</h2>
-      <div class="media-grid">
-        <article class="video-card">
-          <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo sur YouTube">
-            <img src="https://img.youtube.com/vi/2cULRf3Run4/maxresdefault.jpg" alt="Bande démo — miniature" onerror="this.src='https://img.youtube.com/vi/2cULRf3Run4/hqdefault.jpg'">
-            <span class="play" aria-hidden="true">▶</span>
-          </a>
-          <div class="video-meta">
-            <h3>Bande démo</h3>
-            <div class="meta-row">YouTube</div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="photos" class="section">
-      <h2>Photos</h2>
-      <div class="gallery">
-            <a class="featured" href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait1.jpg</text></svg>'"></a>
-        <a href="photos/portrait2.jpg" target="_blank" aria-label="Portrait 2"><img src="photos/portrait2.jpg" alt="Portrait 2" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait2.jpg</text></svg>'"></a>
-        <a href="photos/portrait3.jpg" target="_blank" aria-label="Portrait 3"><img src="photos/portrait3.jpg" alt="Portrait 3" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait3.jpg</text></svg>'"></a>
-        <a href="photos/portrait4.jpg" target="_blank" aria-label="Portrait 4"><img src="photos/portrait4.jpg" alt="Portrait 4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait4.jpg</text></svg>'"></a>
-        <a href="photos/portrait5.jpg" target="_blank" aria-label="Portrait 5"><img src="photos/portrait5.jpg" alt="Portrait 5" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait5.jpg</text></svg>'"></a>
-        <a href="photos/portrait6.jpg" target="_blank" aria-label="Portrait 6"><img src="photos/portrait6.jpg" alt="Portrait 6" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>portrait6.jpg</text></svg>'"></a>
-      </div>
-      <p style="margin-top:10px"><a href="#" aria-label="Voir toutes les photos">Voir toutes les photos</a></p>
-    </section>
-
     <section id="work" class="section split">
       <div class="split-grid">
         <!-- Colonne gauche : Photos en premier, vidéo plus bas et plus petite -->
         <aside class="media-rail">
-          <h2 id="photos">Photos</h2>
+          <h2 id="photos" data-i18n="section.photos">Photos<\/h2>
           <div class="gallery">
-            <a href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1"></a>
+            <a class="featured" href="photos/portrait1.jpg" target="_blank" aria-label="Portrait 1"><img src="photos/portrait1.jpg" alt="Portrait 1"></a>
             <a href="photos/portrait2.jpg" target="_blank" aria-label="Portrait 2"><img src="photos/portrait2.jpg" alt="Portrait 2"></a>
             <a href="photos/portrait3.jpg" target="_blank" aria-label="Portrait 3"><img src="photos/portrait3.jpg" alt="Portrait 3"></a>
             <a href="photos/portrait4.jpg" target="_blank" aria-label="Portrait 4"><img src="photos/portrait4.jpg" alt="Portrait 4"></a>
@@ -188,7 +146,7 @@
             <a href="photos/portrait6.jpg" target="_blank" aria-label="Portrait 6"><img src="photos/portrait6.jpg" alt="Portrait 6"></a>
           </div>
 
-          <h2 style="margin-top:18px">Bande démo</h2>
+          <h2 id="reel" style="margin-top:18px" data-i18n="section.reel">Bande démo<\/h2>
           <article class="video-card">
             <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo">
               <img src="https://img.youtube.com/vi/2cULRf3Run4/hqdefault.jpg" alt="Bande démo — miniature">
@@ -203,10 +161,10 @@
 
         <!-- Colonne droite : Expériences / textes -->
         <div class="text-rail">
-          <h2 id="bio">Bio</h2>
+          <h2 id="bio" data-i18n="nav.bio">Bio<\/h2>
           <p>Comédienne formée au Cours Florent, Léonore Vanier développe une pratique artistique nourrie par le théâtre, le cinéma et l’écriture. Elle explore des personnages intenses et des univers variés, toujours animée par un besoin d’expression et de transmission.</p>
 
-          <h2 style="margin-top:16px">Informations casting</h2>
+          <h2 style="margin-top:16px" data-i18n="section.casting">Informations casting<\/h2>
           <div class="kv-list" id="casting-list">
             <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue sans accent), Espagnol (avancé), Coréen (notions), Français (maternelle)</div></div>
             <div class="kv"><div class="k">Danses</div><div>Pompons girls compétition, Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
@@ -235,31 +193,33 @@
             <li><strong>2025</strong> – MASTERPROF – Réal. Jef Yomby – Opango – Rôle principal (comédie)</li>
           </ul>
 
-          <h2 style="margin-top:16px">Télévision</h2>
+          <h2 style="margin-top:16px" data-i18n="section.tv">Télévision<\/h2>
           <ul>
-            <li><strong>2025</strong> – VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal</li>
-            <li><strong>2024</strong> – ENGIE Solutions – Réal. 714 Prod – Rôle principal</li>
-          </ul>
+            <li><strong>2025<\/strong> – VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal<\/li>
+            <li><strong>2024<\/strong> – ENGIE Solutions – Réal. 714 Prod – Rôle principal<\/li>
+          <\/ul>
+
+          <h2 id="formations" style="margin-top:16px" data-i18n="section.training">Formations<\/h2>
+          <ul>
+            <li><strong>2025<\/strong> – Stage « Transe » avec Valérie De Dietrich, Stage Systema avec Laurent Joly<\/li>
+            <li><strong>2024-25<\/strong> – Cours Florent : Stage Jeu caméra (Jersy Klesyk, Sophie Le Carpentier), Stage Masque (Khadija El Mahdi), Improvisation (David Garel)<\/li>
+            <li><strong>2023-24<\/strong> – Cours Florent : Année 2 avec Xavier Bazin<\/li>
+            <li><strong>2022-23<\/strong> – Cours Florent : Année 1 avec Olivier Augrond<\/li>
+            <li><strong>2022<\/strong> – Diplôme d’ingénieur, National University of Singapore<\/li>
+          <\/ul>
+
+          <h2 id="contact" style="margin-top:16px" data-i18n="section.contact">Contact<\/h2>
+          <p>Tél&nbsp;: <span data-i18n="contact.tel">[numéro à insérer]<\/span><br>
+          Email&nbsp;: <span data-i18n="contact.mail">[adresse mail à insérer]<\/span><br>
+          Paris, Île-de-France<\/p>
+          <p><a href="assets/Leonore_Vanier_CV.pdf" target="_blank" rel="noopener" data-i18n="contact.pdf">PDF – Présentation<\/a><\/p>
         </div>
       </div>
     </section>
 
-    <section id="formations" class="section">
-      <h2>Formations</h2>
-      <ul>
-        <li><strong>2025</strong> – Stage « Transe » avec Valérie De Dietrich, Stage Systema avec Laurent Joly</li>
-        <li><strong>2024-25</strong> – Cours Florent : Stage Jeu caméra (Jersy Klesyk, Sophie Le Carpentier), Stage Masque (Khadija El Mahdi), Improvisation (David Garel)</li>
-        <li><strong>2023-24</strong> – Cours Florent : Année 2 avec Xavier Bazin</li>
-        <li><strong>2022-23</strong> – Cours Florent : Année 1 avec Olivier Augrond</li>
-        <li><strong>2022</strong> – Diplôme d’ingénieur, National University of Singapore</li>
-      </ul>
-    </section>
+    
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>Téléphone : [numéro à insérer]<br>Email : [adresse mail à insérer]<br>Basée à Paris, Île-de-France</p>
-      <p><a href="CV_LeonoreVanier.pdf" target="_blank">Télécharger le CV en PDF</a></p>
-    </section>
+    
   </main>
 
   <footer class="container">
@@ -282,6 +242,53 @@
         toggle.addEventListener('click', (e)=>{ e.preventDefault(); list.classList.toggle('expanded'); apply(); });
       }
       apply();
+    })();
+  </script>
+  <script>
+    (function(){
+      const dict = {
+        fr: {
+          "nav.bio":"Bio",
+          "section.casting":"Informations casting",
+          "section.photos":"Photos",
+          "section.reel":"Bande démo",
+          "section.theatre":"Théâtre",
+          "section.films":"Cinéma – Courts métrages",
+          "section.tv":"Télévision",
+          "section.training":"Formations",
+          "section.contact":"Contact",
+          "toggle.more":"Afficher plus",
+          "toggle.less":"Afficher moins",
+          "contact.pdf":"PDF – Présentation"
+        },
+        en: {
+          "nav.bio":"Bio",
+          "section.casting":"Casting info",
+          "section.photos":"Photos",
+          "section.reel":"Showreel",
+          "section.theatre":"Theatre",
+          "section.films":"Short films",
+          "section.tv":"Television",
+          "section.training":"Training",
+          "section.contact":"Contact",
+          "toggle.more":"Show more",
+          "toggle.less":"Show less",
+          "contact.pdf":"PDF – Profile"
+        }
+      };
+      function t(k,lang){ return (dict[lang] && dict[lang][k]) || (dict.fr && dict.fr[k]) || k; }
+      function translate(lang){
+        document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.getAttribute('data-i18n'), lang); });
+        const list = document.getElementById('casting-list');
+        const toggle = document.querySelector('.toggle-casting');
+        if(list && toggle){ const expanded = list.classList.contains('expanded'); toggle.textContent = t('toggle.'+(expanded?'less':'more'), lang); }
+      }
+      const frBtn = document.getElementById('lang-fr');
+      const enBtn = document.getElementById('lang-en');
+      let lang = localStorage.getItem('lang') || 'fr';
+      translate(lang);
+      frBtn && frBtn.addEventListener('click', e=>{ e.preventDefault(); lang='fr'; localStorage.setItem('lang',lang); translate(lang); });
+      enBtn && enBtn.addEventListener('click', e=>{ e.preventDefault(); lang='en'; localStorage.setItem('lang',lang); translate(lang); });
     })();
   </script>
 </body>
