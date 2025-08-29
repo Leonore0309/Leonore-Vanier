@@ -46,6 +46,19 @@
   @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
   .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
   .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+  .gallery a{
+  border: none !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  overflow: visible !important;      /* ne pas rogner */
+}
+
+.gallery img{
+  width: 100% !important;            /* prend la largeur de la tuile */
+  height: auto !important;           /* conserve la hauteur naturelle */
+  object-fit: initial !important;    /* pas de crop */
+  aspect-ratio: auto !important;     /* supprime le 4/5 forcé */
+}
     /* Miniature vidéo (YouTube) */
   .media-grid{display:grid;gap:18px}
   .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
