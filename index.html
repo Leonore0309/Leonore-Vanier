@@ -28,86 +28,72 @@
     .kv .k{text-transform:uppercase;font-weight:700;letter-spacing:.4px}
     .socials{display:flex;gap:12px;align-items:center}
     .socials img{width:24px;height:24px}
+
+    /* Gallery base */
     .gallery{display:grid;gap:16px}
-  @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-  .gallery a.featured{grid-column:1 / -1}
-  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
-  /* autres vignettes réduites visuellement à ~60% */
-  .gallery a:not(.featured) img{width:60%;height:auto;aspect-ratio:auto;margin:0 auto;padding:8px}
+    @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
+    .gallery a.featured{grid-column:1 / -1}
+    .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+    /* autres vignettes réduites visuellement à ~60% */
+    .gallery a:not(.featured) img{width:60%;height:auto;aspect-ratio:auto;margin:0 auto;padding:8px}
     .gallery img{width:100%;height:auto;border:1px solid #dcd6cc;border-radius:8px;object-fit:cover}
+
     .actions{display:flex;gap:14px;align-items:center}
-  .icon{display:inline-flex;width:26px;height:26px}
-  .icon svg{width:100%;height:100%;display:block}
-  .gallery{display:grid;gap:18px}
-  @media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
-  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
-  .gallery a{
-  border: none !important;
-  background: transparent !important;
-  border-radius: 0 !important;
-  overflow: visible !important;      /* ne pas rogner */
-}
+    .icon{display:inline-flex;width:26px;height:26px}
+    .icon svg{width:100%;height:100%;display:block}
 
-.gallery img{
-  width: 100% !important;            /* prend la largeur de la tuile */
-  height: auto !important;           /* conserve la hauteur naturelle */
-  object-fit: initial !important;    /* pas de crop */
-  aspect-ratio: auto !important;     /* supprime le 4/5 forcé */
-}
-    /* Miniature vidéo (YouTube) */
-  .media-grid{display:grid;gap:18px}
-  .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
-  .thumb{position:relative;display:block}
-  .thumb::before{content:"";display:block;padding-top:56.25%} /* 16:9 */
-  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;border:1px solid #dcd6cc}
-  .video-meta{padding:10px}
-  .video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
-  .meta-row{font-size:13px;color:#555}
-    /* --- Adjusted typography (smaller) --- */
-  html{font-size:14px}
-  body{line-height:1.55}
-  .name{font-size:38px}
-  .roles{font-size:13px;letter-spacing:.5px}
-  .top-nav a{font-size:12px}
-  .section h2{font-size:24px}
-  .kv .k{font-size:14px}
+    /* Another gallery definition kept for compatibility, overridden later */
+    .gallery{display:grid;gap:18px}
+    @media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
+    .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
 
-  /* Hide old standalone sections (we'll use a split layout) */
-  #videos, #photos{display:none}
-  /* Hide legacy sections so split starts at Bio */
-  #biographie, #casting{display:none} 
+    /* Remove frames/constraints on photos (final overrides) */
+    .gallery a{ border: none !important; background: transparent !important; border-radius: 0 !important; overflow: visible !important; }
+    .gallery img{ width: 100% !important; height: auto !important; object-fit: initial !important; aspect-ratio: auto !important; border: none !important; }
 
-  /* Split layout: left column = photos+video, right column = textes/expériences */
-  .split{padding:20px 0;border-bottom:1px solid #dcd6cc}
-  .split-grid{display:grid;gap:18px}
-  @media(min-width:960px){.split-grid{grid-template-columns:400px 1fr}}
-  @media(max-width:959.98px){.split-grid{grid-template-columns:1fr}}
+    /* Video card */
+    .media-grid{display:grid;gap:18px}
+    .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
+    .thumb{position:relative;display:block}
+    .thumb::before{content:"";display:block;padding-top:56.25%} /* 16:9 */
+    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;border:1px solid #dcd6cc}
+    .video-meta{padding:10px}
+    .video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
+    .meta-row{font-size:13px;color:#555}
 
-  /* Gallery like reference: 2 colonnes serrées */
-  .gallery{display:grid;gap:16px}
-  @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-  .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-  .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
+    /* Smaller overall typography */
+    html{font-size:14px}
+    body{line-height:1.55}
+    .name{font-size:38px}
+    .roles{font-size:13px;letter-spacing:.5px}
+    .top-nav a{font-size:12px}
+    .section h2{font-size:24px}
+    .kv .k{font-size:14px}
 
-  /* Smaller video card under photos */
-  .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
-  .thumb{position:relative;display:block}
-  .thumb::before{content:"";display:block;padding-top:56.25%}
-  .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:22px;line-height:1;border:1px solid #dcd6cc}
-  .video-meta{padding:8px}
-  .video-meta h3{margin:0 0 2px;font-size:15px}
-  .meta-row{font-size:12px;color:#555}
-    /* patches overrides */
-  .gallery a.featured{grid-column:1 / -1}
-  .gallery a:not(.featured) img{width:100% !important;padding:0 !important}
-  .contact-mini{font-size:12px;color:#666;margin-top:4px}
+    /* Split layout */
+    #videos, #photos{display:none}
+    #biographie, #casting{display:none}
+    .split{padding:20px 0;border-bottom:1px solid #dcd6cc}
+    .split-grid{display:grid;gap:18px}
+    @media(min-width:960px){.split-grid{grid-template-columns:400px 1fr}}
+    @media(max-width:959.98px){.split-grid{grid-template-columns:1fr}}
+
+    /* Like reference: two tight columns */
+    .gallery{display:grid;gap:16px}
+    @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
+    .gallery a{display:block}
+    .gallery img{display:block}
+
+    /* Final small patches */
+    .gallery a.featured{grid-column:1 / -1}
+    .gallery a:not(.featured) img{width:100% !important;padding:0 !important}
+    .contact-mini{font-size:12px;color:#666;margin-top:4px}
   </style>
 </head>
 <body>
@@ -116,13 +102,11 @@
       <h1 class="name">Léonore Vanier</h1>
       <p>Comédienne</p>
       <div class="contact-mini">Tél&nbsp;: 06 79 10 75 93 • Email&nbsp;: leonore.vanier@gmail.com • Paris, Île-de-France</div>
-      
-    </nav>
     </div>
     <div class="actions" aria-label="Liens rapides">
-    <a class="icon" href="#" id="download-snap" aria-label="Télécharger une capture du site" title="Télécharger une capture du site">
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 3h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="#111"/><path d="M13 3v5h5" stroke="#111"/><path d="M12 12v6" stroke="#111"/><path d="M9 15l3 3 3-3" stroke="#111"/></svg>
-    </a>
+      <a class="icon" href="#" id="download-snap" aria-label="Télécharger une capture du site" title="Télécharger une capture du site">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 3h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="#111"/><path d="M13 3v5h5" stroke="#111"/><path d="M12 12v6" stroke="#111"/><path d="M9 15l3 3 3-3" stroke="#111"/></svg>
+      </a>
 
       <a class="icon" href="https://www.instagram.com/leonorevanier/?igsh=aTh5aG9tc3puZTl6&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram de Léonore Vanier">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#111"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#111"/><circle cx="17.5" cy="6.5" r="1.2" fill="#111"/></svg>
@@ -152,7 +136,8 @@
           <h2 id="reel" style="margin-top:14px" data-i18n="section.reel">Bande démo</h2>
           <article class="video-card">
             <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo">
-              <img src="https://img.youtube.com/vi/2cULRf3Run4/hqdefault.jpg" alt="Bande démo — miniature">
+              <!-- Miniature locale pour éviter CORS dans la capture -->
+              <img src="photos/reel-cover.jpg" alt="Bande démo — miniature locale">
               <span class="play" aria-hidden="true">▶</span>
             </a>
             <div class="video-meta">
@@ -214,20 +199,16 @@ Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
             <li><strong>2022</strong> – Diplôme d’ingénieur, National University of Singapore</li>
           </ul>
 
-          
           <p><a href="assets/Leonore_Vanier_CV.pdf" target="_blank" rel="noopener" data-i18n="contact.pdf">PDF – Présentation</a></p>
         </div>
       </div>
     </section>
-
-    
-
-    
   </main>
 
   <footer class="container">
     <small>© <span id="year"></span> Léonore Vanier</small>
   </footer>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     // Casting: show only first 3 lines by default
@@ -247,6 +228,7 @@ Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
       apply();
     })();
   </script>
+
   <script>
     (function(){
       const dict = {
@@ -292,6 +274,67 @@ Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
       translate(lang);
       frBtn && frBtn.addEventListener('click', e=>{ e.preventDefault(); lang='fr'; localStorage.setItem('lang',lang); translate(lang); });
       enBtn && enBtn.addEventListener('click', e=>{ e.preventDefault(); lang='en'; localStorage.setItem('lang',lang); translate(lang); });
+    })();
+  </script>
+
+  <script>
+    // Téléchargement d'une capture d'écran de la page (PNG) — version robuste
+    (function(){
+      function loadHtml2Canvas(){
+        return new Promise(function(resolve, reject){
+          if(window.html2canvas){ resolve(window.html2canvas); return; }
+          var s = document.createElement('script');
+          s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+          s.async = true;
+          s.onload = function(){ resolve(window.html2canvas); };
+          s.onerror = reject;
+          document.head.appendChild(s);
+        });
+      }
+      function markExternalImagesIgnore(){
+        document.querySelectorAll('img').forEach(function(img){
+          try{
+            var u = new URL(img.getAttribute('src') || '', location.href);
+            if(u.origin !== location.origin){ img.setAttribute('data-html2canvas-ignore','true'); }
+          }catch(e){}
+        });
+      }
+      async function takeScreenshot(){
+        var btn = document.getElementById('download-snap');
+        if(btn){ btn.setAttribute('aria-busy','true'); }
+        try{
+          // Ignore d’emblée les images externes (CORS)
+          markExternalImagesIgnore();
+          await loadHtml2Canvas();
+          var root = document.documentElement;
+          var w = Math.max(root.scrollWidth, root.clientWidth);
+          var h = Math.max(root.scrollHeight, root.clientHeight);
+          var canvas = await html2canvas(root, {
+            backgroundColor: getComputedStyle(document.body).backgroundColor,
+            useCORS: true,
+            scale: 2,
+            windowWidth: w,
+            windowHeight: h,
+            logging: false,
+            ignoreElements: function(el){
+              if(el.classList && el.classList.contains('calib-overlay')) return true;
+              if(el.hasAttribute && el.hasAttribute('data-html2canvas-ignore')) return true;
+              return false;
+            }
+          });
+          var data = canvas.toDataURL('image/png');
+          var a = document.createElement('a');
+          a.href = data;
+          a.download = 'leonore-vanier_site_'+ new Date().toISOString().slice(0,10) +'.png';
+          document.body.appendChild(a); a.click(); a.remove();
+        }catch(err){
+          try{ window.print(); }catch(e){}
+        }finally{
+          if(btn){ btn.removeAttribute('aria-busy'); }
+        }
+      }
+      var trigger = document.getElementById('download-snap');
+      if(trigger){ trigger.addEventListener('click', function(e){ e.preventDefault(); takeScreenshot(); }); }
     })();
   </script>
 </body>
