@@ -13,7 +13,7 @@
       --accent:#ffffff;
       --card:#0b0b0b;
       --border:#262626;
-      --maxw:1050px;
+      --maxw:980px;
     }
 
     html,body{height:100%}
@@ -31,7 +31,7 @@
     a{color:var(--accent);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    .container{max-width:var(--maxw);margin-inline:auto;padding:20px}
+    .container{max-width:var(--maxw);margin-inline:auto;padding-left:18px;padding-right:18px;padding-top:18px;padding-bottom:18px}
     .site-grid{display:grid;gap:18px}
 
     /* HEADER */
@@ -80,7 +80,11 @@
 
     /* LAYOUT responsive calqué sur claraines.fr */
     @media (min-width: 960px){
-      .site-grid{grid-template-columns: 1fr 380px}
+      .site-grid{grid-template-columns: 1fr 360px}
+      .two-col{grid-template-columns:1fr 1fr}
+      .media-grid{grid-template-columns: 1fr 1fr}
+      .gallery{grid-template-columns: repeat(5,1fr)}
+    }
       .two-col{grid-template-columns:1fr 1fr}
       .media-grid{grid-template-columns: 1fr 1fr}
       .gallery{grid-template-columns: repeat(5,1fr)}
