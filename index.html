@@ -4,111 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Léonore Vanier</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body{margin:0;font-family:Inter, sans-serif;background:#f8f6f0;color:#111;line-height:1.6}
-    a{color:#111;text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:980px;margin:auto;padding:18px}
-    .hero{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid #dcd6cc;padding-bottom:12px}
-    .brand{display:flex;flex-direction:column;gap:6px}
-    .name{margin:0;font-size:48px;font-weight:800;text-transform:uppercase;letter-spacing:.5px}
-    .roles{font-size:16px;text-transform:uppercase;color:#555;letter-spacing:.6px}
-    .top-nav{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
-    .top-nav a{font-size:14px}
-    .section{padding:20px 0;border-bottom:1px solid #dcd6cc}
-    .section h2{margin:0 0 12px 0;font-size:32px;font-weight:800;text-transform:uppercase}
-    .section h2::after{content:"";display:block;width:60px;height:2px;background:#dcd6cc;margin-top:8px}
-    ul{list-style:none;padding:0;margin:0}
-    li{margin-bottom:6px}
-    .kv-list{display:grid}
-    .kv{display:grid;grid-template-columns:220px 1fr;padding:10px 0;border-bottom:1px solid #dcd6cc}
-    .kv .k{text-transform:uppercase;font-weight:700;letter-spacing:.4px}
-    .socials{display:flex;gap:12px;align-items:center}
-    .socials img{width:24px;height:24px}
 
-    /* Gallery base */
-    .gallery{display:grid;gap:16px}
-    @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-    .gallery a.featured{grid-column:1 / -1}
-    .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
-    /* autres vignettes réduites visuellement à ~60% */
-    .gallery a:not(.featured) img{width:60%;height:auto;aspect-ratio:auto;margin:0 auto;padding:8px}
-    .gallery img{width:100%;height:auto;border:1px solid #dcd6cc;border-radius:8px;object-fit:cover}
-
-    .actions{display:flex;gap:14px;align-items:center}
-    .icon{display:inline-flex;width:26px;height:26px}
-    .icon svg{width:100%;height:100%;display:block}
-
-    /* Another gallery definition kept for compatibility, overridden later */
-    .gallery{display:grid;gap:18px}
-    @media(min-width:960px){.gallery{grid-template-columns:repeat(3,1fr)}}
-    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    .gallery a{display:block;border:1px solid #dcd6cc;background:#eee;border-radius:8px;overflow:hidden}
-    .gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:4/5}
-
-    /* Remove frames/constraints on photos (final overrides) */
-    .gallery a{ border: none !important; background: transparent !important; border-radius: 0 !important; overflow: visible !important; }
-    .gallery img{ width: 100% !important; height: auto !important; object-fit: initial !important; aspect-ratio: auto !important; border: none !important; }
-
-    /* Video card */
-    .media-grid{display:grid;gap:12px}
-    .video-card{background:#fff;border:1px solid #dcd6cc;border-radius:8px;overflow:hidden}
-    .thumb{position:relative;display:block}
-    .thumb::before{content:"";display:block;padding-top:56.25%} /* 16:9 */
-    .thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-    .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.9);color:#111;font-size:28px;line-height:1;border:1px solid #dcd6cc}
-    .video-meta{padding:10px}
-    .video-meta h3{margin:0 0 4px;font-size:16px;font-weight:700}
-    .meta-row{font-size:13px;color:#555}
-
-    /* Smaller overall typography */
-    html{font-size:14px}
-    body{line-height:1.55}
-    .name{font-size:38px}
-    .roles{font-size:13px;letter-spacing:.5px}
-    .top-nav a{font-size:12px}
-    .section h2{font-size:24px}
-    .kv .k{font-size:14px}
-
-    /* Split layout */
-    #videos, #photos{display:none}
-    #biographie, #casting{display:none}
-    .split{padding:20px 0;border-bottom:1px solid #dcd6cc}
-    .split-grid{display:grid;gap:18px}
-    @media(min-width:960px){.split-grid{grid-template-columns:400px 1fr}}
-    @media(max-width:959.98px){.split-grid{grid-template-columns:1fr}}
-
-    /* Like reference: two tight columns */
-    .gallery{display:grid;gap:16px}
-    @media(min-width:960px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:959.98px){.gallery{grid-template-columns:repeat(2,1fr)}}
-    .gallery a{display:block}
-    .gallery img{display:block}
-
-    /* Final small patches */
-    .gallery a.featured{grid-column:1 / -1}
-    .gallery a:not(.featured) img{width:100% !important;padding:0 !important}
-    .contact-mini{font-size:12px;color:#666;margin-top:4px}
-    /* === Lightbox (visionneuse) === */
-  #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:9999}
-  #lightbox.open{display:flex}
-  #lightbox .lb-stage{max-width:92vw;max-height:92vh;position:relative}
-  #lightbox img{max-width:92vw;max-height:92vh;display:block}
-  #lightbox .lb-close{position:fixed;top:14px;right:14px;width:40px;height:40px;border:none;background:rgba(255,255,255,.95);border-radius:8px;font-size:24px;line-height:1;cursor:pointer}
-  #lightbox .lb-prev,#lightbox .lb-next{position:fixed;top:0;bottom:0;width:40%;border:none;background:transparent;color:#fff;font-size:40px;cursor:pointer}
-  #lightbox .lb-prev{left:0}
-  #lightbox .lb-next{right:0}
-  #lightbox .lb-prev::after,#lightbox .lb-next::after{position:absolute;top:50%;transform:translateY(-50%);opacity:.85}
-  #lightbox .lb-prev::after{content:'<';left:24px}
-  #lightbox .lb-next::after{content:'>';right:24px}
-  #lightbox .lb-caption{position:fixed;left:16px;right:16px;bottom:16px;color:#eee;text-align:center;font-size:14px}
-  body.lb-open{overflow:hidden}
-  </style>
+  <!-- Styles externes -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="container hero">
@@ -118,15 +20,21 @@
     </div>
     <div class="actions" aria-label="Liens rapides">
       <a class="icon" href="#" id="download-snap" aria-label="Télécharger une capture du site" title="Télécharger une capture du site">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 3h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="#111"/><path d="M13 3v5h5" stroke="#111"/><path d="M12 12v6" stroke="#111"/><path d="M9 15l3 3 3-3" stroke="#111"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M6 3h7l5 5v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" stroke="currentColor"/>
+          <path d="M13 3v5h5" stroke="currentColor"/>
+          <path d="M12 12v6" stroke="currentColor"/>
+          <path d="M9 15l3 3 3-3" stroke="currentColor"/>
+         </svg>
       </a>
-
       <a class="icon" href="https://www.instagram.com/leonorevanier/?igsh=aTh5aG9tc3puZTl6&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram de Léonore Vanier">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#111"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#111"/><circle cx="17.5" cy="6.5" r="1.2" fill="#111"/></svg>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="none" stroke="#111"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="#111"/><circle cx="17.5" cy="6.5" r="1.2" fill="#111"/>
+      </svg>
       </a>
       <span aria-hidden="true">|</span>
-      <a href="#" id="lang-fr" aria-label="Langue Française">FR</a> / <a href="#" id="lang-en" aria-label="Langue Anglaise">EN</a>
-    </div>
+      <button class="lang-btn" data-lang="fr" aria-pressed="true">FR</button> /
+      <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </nav>
   </header>
 
   <main class="container">
@@ -136,37 +44,58 @@
         <aside class="media-rail">
           <h2 id="photos" data-i18n="section.photos">Photos</h2>
           <div class="gallery">
-            <a class="featured" href="photos/Epoque.jpg" target="_blank" aria-label="Epoque"><img src="photos/Epoque.jpg" alt="Epoque" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Epoque.jpg</text></svg>'"></a>
-            <a href="photos/jeune.jpg" target="_blank" aria-label="Innocence"><img src="photos/jeune.jpg" alt="Innoncence" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>jeune.jpg</text></svg>'"></a>
-            <a href="photos/Fatale.jpg" target="_blank" aria-label="Fatale"><img src="photos/Fatale.jpg" alt="Fatale" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Fatale.jpg</text></svg>'"></a>
-            <a href="photos/malice.jpg" target="_blank" aria-label="Malice"><img src="photos/malice.jpg" alt="Malice" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>malice.jpg</text></svg>'"></a>
-            <a href="photos/romantique.jpg" target="_blank" aria-label="Romantique"><img src="photos/romantique.jpg" alt="Romantique" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>romantique.jpg</text></svg>'"></a>
-            <a href="photos/Sportive, dynamique.jpg" target="_blank" aria-label="Dynamique"><img src="photos/Sportive, dynamique.jpg" alt="Dynamique" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Sportive, dynamique.jpg</text></svg>'"></a>
-            <a href="photos/Puissante.jpeg" target="_blank" aria-label="Puissance"><img src="photos/Puissante.jpeg" alt="Puissance" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Puissante.jpeg</text></svg>'"></a>
-            <a href="photos/douceur.jpg" target="_blank" aria-label="Institutionnelle"><img src="photos/douceur.jpg" alt="Institutionnelle" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>douceur.jpg</text></svg>'"></a> 
-            <a href="photos/Héroïne romantique.jpg" target="_blank" aria-label="Ensorcelle"><img src="photos/Héroïne romantique.jpg" alt="Ensorcelle" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Héroïne romantique.jpg</text></svg>'"></a>
-            <a href="photos/Héroïne romantique époque.jpg" target="_blank" aria-label="Twilight"><img src="photos/Héroïne romantique époque.jpg" alt="Twilight" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Héroïne romantique époque.jpg</text></svg>'"></a>
-            <a href="photos/Jeune flic.jpg" target="_blank" aria-label="Rue"><img src="photos/Jeune flic.jpg" alt="Rue" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 500\'><rect width=\'100%\' height=\'100%\' fill=\'%23eeeeee\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'Inter, Arial\' font-size=\'18\' fill=\'%23999\'>Jeune flic.jpg</text></svg>'"></a>  
-        </div>
+            <a class="featured" href="photos/Epoque.jpg" aria-label="Epoque" data-i18n-attr="aria-label:photos.epoque">
+              <img src="photos/Epoque.jpg" alt="Epoque" data-i18n-attr="alt:photos.epoque" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/jeune.jpg" aria-label="Innocence" data-i18n-attr="aria-label:photos.innocence">
+              <img src="photos/jeune.jpg" alt="Innocence" data-i18n-attr="alt:photos.innocence" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Fatale.jpg" aria-label="Fatale" data-i18n-attr="aria-label:photos.fatale">
+              <img src="photos/Fatale.jpg" alt="Fatale" data-i18n-attr="alt:photos.fatale" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/malice.jpg" aria-label="Malice" data-i18n-attr="aria-label:photos.malice">
+              <img src="photos/malice.jpg" alt="Malice" data-i18n-attr="alt:photos.malice" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/romantique.jpg" aria-label="Romantique" data-i18n-attr="aria-label:photos.romantique">
+              <img src="photos/romantique.jpg" alt="Romantique" data-i18n-attr="alt:photos.romantique" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Sportive, dynamique.jpg" aria-label="Dynamique" data-i18n-attr="aria-label:photos.dynamique">
+              <img src="photos/Sportive, dynamique.jpg" alt="Dynamique" data-i18n-attr="alt:photos.dynamique" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Puissante.jpeg" aria-label="Puissante" data-i18n-attr="aria-label:photos.puissante">
+              <img src="photos/Puissante.jpeg" alt="Puissante" data-i18n-attr="alt:photos.puissante" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/douceur.jpg" aria-label="Douceur" data-i18n-attr="aria-label:photos.douceur">
+              <img src="photos/douceur.jpg" alt="Douceur" data-i18n-attr="alt:photos.douceur" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Héroïne romantique.jpg" aria-label="Héroïne romantique" data-i18n-attr="aria-label:photos.heroine_romantique">
+              <img src="photos/Héroïne romantique.jpg" alt="Héroïne romantique" data-i18n-attr="alt:photos.heroine_romantique" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Héroïne romantique époque.jpg" aria-label="Héroïne romantique époque" data-i18n-attr="aria-label:photos.heroine_epoque">
+              <img src="photos/Héroïne romantique époque.jpg" alt="Héroïne romantique époque" data-i18n-attr="alt:photos.heroine_epoque" loading="lazy" decoding="async">
+            </a>
+            <a href="photos/Jeune flic.jpg" aria-label="Jeune flic" data-i18n-attr="aria-label:photos.jeune_flic">
+              <img src="photos/Jeune flic.jpg" alt="Jeune flic" data-i18n-attr="alt:photos.jeune_flic" loading="lazy" decoding="async">
+            </a>
+          </div>
         </aside>
+        
         <!-- Colonne droite : Expériences / textes -->
         <div class="text-rail">
           <h2 id="bio" data-i18n="nav.bio">Bio</h2>
-          <p>"Invente, imagine, suppose.
-Fouille dans ton esprit. Cherches-y quelque chose
-D’étrange, d’insensé, d’horrible et d’inouï.
-Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
+          <p>"Invente, imagine, suppose. Fouille dans ton esprit. Cherches-y quelque chose d’étrange, d’insensé, d’horrible et d’inouï. Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]
+          </p>
        
           <h2 id="casting" data-i18n="section.casting">Informations casting</h2>
           <div class="kv-list" id="casting-list">
-            <div class="kv"><div class="k">Langues</div><div>Anglais (bilingue sans accent), Espagnol (avancé), Coréen, Italien (notions), Français (maternelle)</div></div>
-            <div class="kv"><div class="k">Danses</div><div>Pompons girls (compétition), Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
-            <div class="kv"><div class="k">Musique</div><div>Chant (Alto)</div></div>
-            <div class="kv"><div class="k">Sport</div><div>Athlétisme (semi-marathon), Ski (très bon niveau), Natation (bon niveau), Karaté (bon niveau)</div></div>
-            <div class="kv"><div class="k">Hobbies</div><div>Couture, Poterie, Modèle photo</div></div>
-            <div class="kv"><div class="k">Permis</div><div>B</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.langues.k">Langues</div><div data-i18n="casting.langues.v">Anglais (bilingue sans accent), Espagnol (avancé), Coréen, Italien (notions), Français (maternelle)</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.danses.k">Danses</div><div data-i18n="casting.danses.v">Pompons girls (compétition), Classique (très bon niveau), Modern’Jazz (bon niveau)</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.musique.k">Musique</div><div data-i18n="casting.musique.v">Chant (Alto)</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.sport.k">Sport</div><div data-i18n="casting.sport.v">Athlétisme (semi-marathon), Ski (très bon niveau), Natation (bon niveau), Karaté (bon niveau)</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.hobbies.k">Hobbies</div><div data-i18n="casting.hobbies.v">Couture, Poterie, Modèle photo</div></div>
+            <div class="kv"><div class="k" data-i18n="casting.permis.k">Permis</div><div data-i18n="casting.permis.v">B</div></div>
           </div>
-          <p><a href="#" class="toggle-casting" data-expanded="false" data-i18n="toggle.more">Afficher plus</a></p>
+          <p><a href="#" class="toggle-casting" data-i18n="toggle.more">Afficher plus</a></p>
 
           <h2 data-i18n="section.theatre" style="margin-top:16px">Théâtre</h2>
           <ul>
@@ -180,39 +109,42 @@ Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
 
           <h2 data-i18n="section.films" style="margin-top:16px">Cinéma – Courts métrages</h2>
           <ul>
-            <li><strong>2025</strong> – J’EN TROUVERAI UN AUTRE – Réal. Louis Faudais – Rôle principal (comédie) - Sélection "1 min 2 court Festival"</li>
-            <li><strong>2025</strong> – LE DAHUT – Réal. Léonore Vanier – Rôle principal (comédie) - Sélection "Prix Florent Image"</li>
-            <li><strong>2025</strong> – MASTERPROF – Réal. Jef Yomby – Opango – Rôle principal (comédie)</li>
+            <li><strong>2025</strong> – <span data-i18n="films.item1">J’EN TROUVERAI UN AUTRE – Réal. Louis Faudais – Rôle principal (comédie) - Sélection "1 min 2 court Festival"</span></li>
+            <li><strong>2025</strong> – <span data-i18n="films.item2">LE DAHUT – Réal. Léonore Vanier – Rôle principal (comédie) - Sélection "Prix Florent Image"</span></li>
+            <li><strong>2025</strong> – <span data-i18n="films.item3">MASTERPROF – Réal. Jef Yomby – Opango – Rôle principal (comédie)</span></li>
           </ul>
 
           <h2 data-i18n="section.tv" style="margin-top:16px">Télévision</h2>
           <ul>
-            <li><strong>2025</strong> – VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal</li>
-            <li><strong>2024</strong> – ENGIE Solutions – Réal. 714 Prod – Rôle principal</li>
+            <li><strong>2025</strong> – <span data-i18n="tv.item1">VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal</span></li>
+            <li><strong>2024</strong> – <span data-i18n="tv.item2">ENGIE Solutions – Réal. 714 Prod – Rôle principal</span></li>
           </ul>
 
           <h2 id="formations" data-i18n="section.training" style="margin-top:16px">Formations</h2>
           <ul>
-            <li><strong>2025</strong> – Stage « Intitation à la transe » avec Valérie De Dietrich <br>Stage Systema avec Laurent Joly <br>Atelier coaching avec Fabrice Luneau <br>Open Badge : prévenir et lutter contre les VHSS dans le cinéma</br></li>
-            <li><strong>2024-25</strong> – Cours Florent : Année 3 avec Jerzy Klsyk, Sandy Boizard, Sophie Lecarpentier<br>Stage Masque avec Khadija El Mahdi) <br>Stage Improvisation avec David Garel<br>Stage casting avec Emmanuelle Bourcy</br></li>
-            <li><strong>2023-24</strong> – Cours Florent : Année 2 avec Xavier Bazin</li>
-            <li><strong>2022-23</strong> – Cours Florent : Année 1 avec Olivier Augrond</li>
-            <li><strong>2022</strong> – Diplôme d’ingénieur, National University of Singapore</li>
+            <li><span data-i18n="training.item1"><strong>2025</strong> – Stage « Intitation à la transe » avec Valérie De Dietrich <br>Stage Systema avec Laurent Joly <br>Atelier coaching avec Fabrice Luneau <br>Open Badge : prévenir et lutter contre les VHSS dans le cinéma</br></span></li>
+            <li><span data-i18n="training.item2"><strong>2024-25</strong> – Cours Florent : Année 3 avec Jerzy Klsyk, Sandy Boizard, Sophie Lecarpentier<br>Stage Masque avec Khadija El Mahdi) <br>Stage Improvisation avec David Garel<br>Stage casting avec Emmanuelle Bourcy</br></span></li>
+            <li><span data-i18n="training.item3"><strong>2023-24</strong> – Cours Florent : Année 2 avec Xavier Bazin</span></li>
+            <li><span data-i18n="training.item4"><strong>2022-23</strong> – Cours Florent : Année 1 avec Olivier Augrond</span></li>
+            <li><span data-i18n="training.item5"><strong>2022</strong> – Diplôme d’ingénieur, National University of Singapore</span></li>
           </ul>
            <h2 id="reel" style="margin-top:14px" data-i18n="section.reel">Bande démo</h2>
           <article class="video-card">
-            <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener" aria-label="Lire la bande démo">
-              <!-- Miniature locale pour éviter CORS dans la capture -->
-              <img src="photos/reel-cover.jpg" alt="Bande démo — miniature locale">
+            <a class="thumb" href="https://youtu.be/2cULRf3Run4?si=3E7pat7Q1dvlqDCT" target="_blank" rel="noopener"
+               aria-label="Lire la bande démo" data-i18n-attr="aria-label:reel.open">
+              <img src="photos/reel-cover.jpg" alt="Bande démo — miniature locale" data-i18n-attr="alt:reel.cover" loading="lazy" decoding="async">
               <span class="play" aria-hidden="true">▶</span>
             </a>
             <div class="video-meta">
-              <h3>Bande démo</h3>
+              <h3 data-i18n="section.reel">Bande démo</h3>
               <div class="meta-row">YouTube</div>
+            </div>
           </article>
         </div>
       </div>
     </section>
+  </main>
+  
     <!-- === Lightbox markup === -->
   <div id="lightbox" aria-hidden="true" role="dialog" aria-label="Visionneuse photos">
     <button class="lb-close" aria-label="Fermer">×</button>
@@ -227,127 +159,8 @@ Une fatalité dont on soit ébloui !" [Ruy Blas, Victor Hugo]</p>
   <footer class="container">
     <small>© <span id="year"></span> Léonore Vanier</small>
   </footer>
-
-  <script>
-    // Visionneuse (lightbox) pour la galerie
-    (function(){
-      const links = Array.from(document.querySelectorAll('.gallery a'));
-      if(!links.length) return;
-      const lb = document.getElementById('lightbox');
-      const img = document.getElementById('lb-img');
-      const cap = document.getElementById('lb-caption');
-      const btnPrev = lb.querySelector('.lb-prev');
-      const btnNext = lb.querySelector('.lb-next');
-      const btnClose = lb.querySelector('.lb-close');
-      let idx = 0;
-
-      function srcOf(i){
-        const a = links[i];
-        return a.getAttribute('href') || (a.querySelector('img') && a.querySelector('img').src);
-      }
-      function altOf(i){
-        const im = links[i].querySelector('img');
-        return (im && im.alt) || '';
-      }
-      function open(i){ idx = i; update(); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('lb-open'); }
-      function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('lb-open'); }
-      function update(){ img.src = srcOf(idx); img.alt = altOf(idx); cap.textContent = img.alt || ''; }
-      function next(){ idx = (idx + 1) % links.length; update(); }
-      function prev(){ idx = (idx - 1 + links.length) % links.length; update(); }
-
-      // Click sur vignettes
-      links.forEach((a,i)=>{
-        a.addEventListener('click', (e)=>{ e.preventDefault(); open(i); });
-      });
-
-      // Zones de navigation
-      btnNext.addEventListener('click', (e)=>{ e.stopPropagation(); next(); });
-      btnPrev.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
-      btnClose.addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
-
-      // Clavier
-      document.addEventListener('keydown', (e)=>{
-        if(!lb.classList.contains('open')) return;
-        if(e.key === 'Escape') close();
-        else if(e.key === 'ArrowRight') next();
-        else if(e.key === 'ArrowLeft') prev();
-      });
-
-      // Cliquez hors de l'image pour fermer
-      lb.addEventListener('click', (e)=>{
-        // si on clique directement sur le fond (pas sur boutons)
-        if(e.target === lb){ close(); }
-      });
-    })();
-  </script>
-<script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    // Casting: show only first 3 lines by default
-    (function(){
-      const list = document.getElementById('casting-list');
-      if(!list) return;
-      const rows = Array.from(list.querySelectorAll('.kv'));
-      const toggle = document.querySelector('.toggle-casting');
-      function apply(){
-        const expanded = list.classList.contains('expanded');
-        rows.forEach((row, i)=>{ row.style.display = (expanded || i < 3) ? 'grid' : 'none'; });
-        if(toggle){ toggle.textContent = expanded ? 'Afficher moins' : 'Afficher plus'; }
-      }
-      if(toggle){
-        toggle.addEventListener('click', (e)=>{ e.preventDefault(); list.classList.toggle('expanded'); apply(); });
-      }
-      apply();
-    })();
-  </script>
-
-  <script>
-    (function(){
-      const dict = {
-        fr: {
-          "nav.bio":"Bio",
-          "section.casting":"Informations casting",
-          "section.photos":"Photos",
-          "section.reel":"Bande démo",
-          "section.theatre":"Théâtre",
-          "section.films":"Cinéma – Courts métrages",
-          "section.tv":"Télévision",
-          "section.training":"Formations",
-          "section.contact":"Contact",
-          "toggle.more":"Afficher plus",
-          "toggle.less":"Afficher moins",
-          "contact.pdf":"PDF – Présentation"
-        },
-        en: {
-          "nav.bio":"Bio",
-          "section.casting":"Casting info",
-          "section.photos":"Photos",
-          "section.reel":"Showreel",
-          "section.theatre":"Theatre",
-          "section.films":"Short films",
-          "section.tv":"Television",
-          "section.training":"Training",
-          "section.contact":"Contact",
-          "toggle.more":"Show more",
-          "toggle.less":"Show less",
-          "contact.pdf":"PDF – Profile"
-        }
-      };
-      function t(k,lang){ return (dict[lang] && dict[lang][k]) || (dict.fr && dict.fr[k]) || k; }
-      function translate(lang){
-        document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.getAttribute('data-i18n'), lang); });
-        const list = document.getElementById('casting-list');
-        const toggle = document.querySelector('.toggle-casting');
-        if(list && toggle){ const expanded = list.classList.contains('expanded'); toggle.textContent = t('toggle.'+(expanded?'less':'more'), lang); }
-      }
-      const frBtn = document.getElementById('lang-fr');
-      const enBtn = document.getElementById('lang-en');
-      let lang = localStorage.getItem('lang') || 'fr';
-      translate(lang);
-      frBtn && frBtn.addEventListener('click', e=>{ e.preventDefault(); lang='fr'; localStorage.setItem('lang',lang); translate(lang); });
-      enBtn && enBtn.addEventListener('click', e=>{ e.preventDefault(); lang='en'; localStorage.setItem('lang',lang); translate(lang); });
-    })();
-  </script>
-
   
+  <script src="app.js" defer></script>
 </body>
+</html>
 </html>
