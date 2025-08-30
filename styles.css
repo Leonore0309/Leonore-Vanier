@@ -46,8 +46,11 @@ li{margin-bottom:6px}
 /* KV list */
 .kv-list{display:grid}
 .kv{
-  display:grid; grid-template-columns:220px 1fr; gap:5px;
-  padding:10px 0; border-bottom:1px solid var(--line)
+  display:grid; 
+  grid-template-columns:140px 1fr; 
+  gap:5px;
+  padding:8px 0; 
+  border-bottom:1px solid var(--line)
 }
 .kv .k{text-transform:uppercase; font-weight:700; letter-spacing:.4px; font-size:14px}
 
