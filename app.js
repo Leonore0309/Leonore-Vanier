@@ -262,27 +262,46 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initLightbox();
 });
 
-// Capture d'écran au clic sur le bouton
-const snapBtn = document.getElementById('download-snap');
-if (snapBtn) {
-  snapBtn.addEventListener('click', async (e)=>{
-    e.preventDefault();
-    const element = document.body; // ou .container si tu veux uniquement le contenu central
-    html2canvas(element, {useCORS:true, scale:2}).then(canvas=>{
-      // Récupérer l'année en cours
-      const year = new Date().getFullYear();
+// ====== Capture d'écran (remplacement complet) ======
+(function initScreenshot(){
+  const btn = document.getElementById('download-snap');
+  if (!btn) return;
 
-      // Nom de fichier personnalisé
+  // Vérifie que la lib est bien chargée (voir <script html2canvas> dans index.html)
+  if (typeof window.html2canvas !== 'function') {
+    btn.addEventListener('click', () => {
+      alert("La capture est indisponible : html2canvas n'a pas été chargée.");
+    });
+    return;
+  }
+
+  btn.addEventListener('click', async () => {
+    try {
+      // Choisis ce que tu veux capturer : body ou juste le contenu central
+      const target = document.body; // ou: document.querySelector('.container')
+
+      const canvas = await html2canvas(target, {
+        useCORS: true,
+        // plus net sur écrans rétina
+        scale: window.devicePixelRatio > 1 ? 2 : 1,
+        // garantit la capture totale de la page même si scroll
+        windowWidth: document.documentElement.scrollWidth,
+        windowHeight: document.documentElement.scrollHeight
+      });
+
+      const year = new Date().getFullYear();
       const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.png`;
 
-      // Télécharger
       const link = document.createElement('a');
       link.download = filename;
       link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link); // iOS/Safari : plus fiable si présent dans le DOM
       link.click();
-    }).catch(err=>{
+      link.remove();
+    } catch (err) {
       console.error("Erreur capture:", err);
-      alert("La capture n'a pas pu être générée 😔");
-    });
+      alert("La capture n'a pas pu être générée. Vérifie que la page est servie en http(s) (pas file://) et que les images ne bloquent pas le CORS.");
+    }
   });
-}
+})();
+
