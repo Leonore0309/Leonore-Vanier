@@ -261,30 +261,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initCastingClamp();
   initLightbox();
 });
+// Charge html2canvas si absent (fallback CDN)
+function ensureHtml2Canvas() {
+  return new Promise((resolve, reject) => {
+    if (window.html2canvas) return resolve();
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+    s.onload = () => window.html2canvas ? resolve() : reject(new Error('html2canvas introuvable après chargement'));
+    s.onerror = () => {
+      const s2 = document.createElement('script');
+      s2.src = 'https://unpkg.com/html2canvas@1.4.1/dist/html2canvas.min.js';
+      s2.onload = () => window.html2canvas ? resolve() : reject(new Error('html2canvas introuvable (fallback)'));
+      s2.onerror = () => reject(new Error('Impossible de charger html2canvas (tous les CDNs)'));
+      document.head.appendChild(s2);
+    };
+    document.head.appendChild(s);
+  });
+}
 
 // ====== Capture d'écran (remplacement complet) ======
 (function initScreenshot(){
   const btn = document.getElementById('download-snap');
   if (!btn) return;
 
-  // Vérifie que la lib est bien chargée (voir <script html2canvas> dans index.html)
-  if (typeof window.html2canvas !== 'function') {
-    btn.addEventListener('click', () => {
-      alert("La capture est indisponible : html2canvas n'a pas été chargée.");
-    });
-    return;
-  }
-
   btn.addEventListener('click', async () => {
     try {
-      // Choisis ce que tu veux capturer : body ou juste le contenu central
-      const target = document.body; // ou: document.querySelector('.container')
+      await ensureHtml2Canvas(); // 👈 garantit la lib chargée
 
+      const target = document.body; // ou document.querySelector('.container')
       const canvas = await html2canvas(target, {
         useCORS: true,
-        // plus net sur écrans rétina
         scale: window.devicePixelRatio > 1 ? 2 : 1,
-        // garantit la capture totale de la page même si scroll
         windowWidth: document.documentElement.scrollWidth,
         windowHeight: document.documentElement.scrollHeight
       });
@@ -295,12 +302,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
       const link = document.createElement('a');
       link.download = filename;
       link.href = canvas.toDataURL('image/png');
-      document.body.appendChild(link); // iOS/Safari : plus fiable si présent dans le DOM
+      document.body.appendChild(link);
       link.click();
       link.remove();
     } catch (err) {
-      console.error("Erreur capture:", err);
-      alert("La capture n'a pas pu être générée. Vérifie que la page est servie en http(s) (pas file://) et que les images ne bloquent pas le CORS.");
+      console.error('Erreur capture:', err);
+      alert("La capture n'a pas pu être générée (chargement html2canvas).");
     }
   });
 })();
