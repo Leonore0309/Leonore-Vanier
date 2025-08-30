@@ -279,35 +279,81 @@ function ensureHtml2Canvas() {
   });
 }
 
-// ====== Capture d'écran (remplacement complet) ======
-(function initScreenshot(){
+/* ====== PDF A4 depuis le contenu central (.container) ====== */
+
+// (optionnel) fallback si html2canvas n'est pas encore chargé
+async function ensureHtml2Canvas() {
+  if (window.html2canvas) return;
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+    s.onload = () => window.html2canvas ? resolve() : reject(new Error('html2canvas non chargé'));
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+(function initPDF(){
   const btn = document.getElementById('download-snap');
   if (!btn) return;
 
   btn.addEventListener('click', async () => {
     try {
-      await ensureHtml2Canvas(); // 👈 garantit la lib chargée
+      await ensureHtml2Canvas();
+      if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert("Le PDF n'a pas pu être généré : jsPDF non chargé.");
+        return;
+      }
 
-      const target = document.body; // ou document.querySelector('.container')
+      // Cible : uniquement le contenu central
+      const target = document.querySelector('main.container') || document.querySelector('.container') || document.body;
+
+      // Capture en canvas (fond blanc, échelle nette)
       const canvas = await html2canvas(target, {
+        backgroundColor: '#ffffff',
         useCORS: true,
-        scale: window.devicePixelRatio > 1 ? 2 : 1,
-        windowWidth: document.documentElement.scrollWidth,
-        windowHeight: document.documentElement.scrollHeight
+        scale: 2, // net sur écrans rétina
+        scrollX: 0, scrollY: -window.scrollY // évite décalage si page scrollée
       });
 
-      const year = new Date().getFullYear();
-      const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.png`;
+      const imgData = canvas.toDataURL('image/png');
 
-      const link = document.createElement('a');
-      link.download = filename;
-      link.href = canvas.toDataURL('image/png');
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
+      // PDF A4 portrait en millimètres
+      const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+      const pageW = pdf.internal.pageSize.getWidth();     // 210mm
+      const pageH = pdf.internal.pageSize.getHeight();    // 297mm
+      const margin = 10;                                   // marge 10mm
+      const usableW = pageW - margin * 2;
+      const usableH = pageH - margin * 2;
+
+      // Dimension image (conservant le ratio) dans la largeur utile
+      const imgW = usableW;
+      const imgH = (canvas.height * imgW) / canvas.width;
+
+      // Première page
+      let heightLeft = imgH;
+      let positionY = margin;
+
+      pdf.addImage(imgData, 'PNG', margin, positionY, imgW, imgH);
+      heightLeft -= usableH;
+
+      // Pages suivantes si besoin
+      while (heightLeft > 0) {
+        pdf.addPage();
+        // Position = marge - (hauteur déjà imprimée)
+        positionY = margin - (imgH - heightLeft);
+        pdf.addImage(imgData, 'PNG', margin, positionY, imgW, imgH);
+        heightLeft -= usableH;
+      }
+
+      // Nom du fichier
+      const year = new Date().getFullYear();
+      const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.pdf`;
+      pdf.save(filename);
+
     } catch (err) {
-      console.error('Erreur capture:', err);
-      alert("La capture n'a pas pu être générée (chargement html2canvas).");
+      console.error('Erreur PDF:', err);
+      alert("Le PDF n'a pas pu être généré. Vérifie que la page est servie en https et que les images sont locales (même domaine).");
     }
   });
 })();
