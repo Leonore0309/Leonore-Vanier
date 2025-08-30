@@ -1,7 +1,8 @@
-/* ========= I18N dictionnaire ========= */
+/* ========= I18N : dictionnaire FR/EN ========= */
 const I18N = {
   fr: {
     "contact.inline": "Tél : 06 79 10 75 93 • Email : leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
+
     "section.photos": "Photos",
     "nav.bio": "Bio",
     "section.casting": "Informations casting",
@@ -12,9 +13,11 @@ const I18N = {
     "section.tv": "Télévision",
     "section.training": "Formations",
     "section.reel": "Bande démo",
+
     "reel.open": "Lire la bande démo",
     "reel.cover": "Bande démo — miniature locale",
-    "bio.quote": "\"Invente, imagine, suppose. Fouille dans ton esprit... [Victor Hugo]\"",
+
+    "bio.quote": "\"Invente, imagine, suppose. Fouille dans ton esprit. Cherches-y quelque chose d’étrange, d’insensé, d’horrible et d’inouï. Une fatalité dont on soit ébloui !\" [Ruy Blas, Victor Hugo]",
 
     "casting.langues.k": "Langues",
     "casting.langues.v": "Anglais (bilingue sans accent), Espagnol (avancé), Coréen, Italien (notions), Français (maternelle)",
@@ -43,7 +46,7 @@ const I18N = {
     "tv.item1": "VINCI AUTOROUTE – Réal. Charly – Prod. Marie Gleyze & Sylvain Pouyet – Rôle principal",
     "tv.item2": "ENGIE Solutions – Réal. 714 Prod – Rôle principal",
 
-    "training.item1": "2025 – Stage « Intitation à la transe » (Valérie De Dietrich) — Stage Systema (Laurent Joly) — Atelier coaching (Fabrice Luneau) — Open Badge VHSS",
+    "training.item1": "2025 – Stage « Intitation à la transe » (Valérie De Dietrich) — Stage Systema (Laurent Joly) — Atelier coaching (Fabrice Luneau) — Open Badge : prévenir et lutter contre les VHSS dans le cinéma",
     "training.item2": "2024-25 – Cours Florent : Année 3 (Jerzy Klsyk, Sandy Boizard, Sophie Lecarpentier) — Stage Masque (Khadija El Mahdi) — Stage Impro (David Garel) — Stage casting (Emmanuelle Bourcy)",
     "training.item3": "2023-24 – Cours Florent : Année 2 (Xavier Bazin)",
     "training.item4": "2022-23 – Cours Florent : Année 1 (Olivier Augrond)",
@@ -61,8 +64,10 @@ const I18N = {
     "photos.heroine_epoque": "Héroïne romantique époque",
     "photos.jeune_flic": "Jeune flic"
   },
+
   en: {
     "contact.inline": "Phone: +33 6 79 10 75 93 • Email: leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
+
     "section.photos": "Photos",
     "nav.bio": "Bio",
     "section.casting": "Casting info",
@@ -73,9 +78,11 @@ const I18N = {
     "section.tv": "Television",
     "section.training": "Training",
     "section.reel": "Showreel",
+
     "reel.open": "Play the showreel",
     "reel.cover": "Showreel — local thumbnail",
-    "bio.quote": "\"Invent, imagine, suppose. Search your mind... [Victor Hugo]\"",
+
+    "bio.quote": "\"Invent, imagine, suppose. Search your mind for something strange, outrageous, terrible, unheard of! A dazzling twist of fate!\" [Ruy Blas, Victor Hugo]",
 
     "casting.langues.k": "Languages",
     "casting.langues.v": "English (bilingual, no accent), Spanish (advanced), Korean, Italian (basic), French (native)",
@@ -105,7 +112,7 @@ const I18N = {
     "tv.item2": "ENGIE Solutions – Dir. 714 Prod – Lead",
 
     "training.item1": "2025 – \"Initiation to trance\" (Valérie De Dietrich) — Systema (Laurent Joly) — Coaching workshop (Fabrice Luneau) — VHSS badge",
-    "training.item2": "2024-25 – Cours Florent: Year 3 (Jerzy Klsyk, Sandy Boizard, Sophie Lecarpentier) — Mask workshop (Khadija El Mahdi) — Improv (David Garel) — Casting (Emmanuelle Bourcy)",
+    "training.item2": "2024-25 – Cours Florent: Year 3 (Jerzy Klsyk, Sandy Boizard, Sophie Lecarpentier) — Mask (Khadija El Mahdi) — Improv (David Garel) — Casting (Emmanuelle Bourcy)",
     "training.item3": "2023-24 – Cours Florent: Year 2 (Xavier Bazin)",
     "training.item4": "2022-23 – Cours Florent: Year 1 (Olivier Augrond)",
     "training.item5": "2022 – Engineering degree, National University of Singapore",
@@ -124,7 +131,7 @@ const I18N = {
   }
 };
 
-/* ========= Fonctions i18n ========= */
+/* ========= i18n : applique langue ========= */
 function setLang(lang){
   localStorage.setItem('lang', lang);
   document.documentElement.setAttribute('lang', lang);
@@ -133,32 +140,59 @@ function setLang(lang){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const key = el.getAttribute('data-i18n');
     const text = I18N[lang]?.[key];
-    if (text) el.textContent = text;
+    if (typeof text === 'string') el.textContent = text;
   });
 
-  // Attributs (ex: alt, aria-label)
+  // Attributs (ex: alt, aria-label) via data-i18n-attr="alt:key;aria-label:key2"
   document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
     const defs = el.getAttribute('data-i18n-attr')
       .split(';').map(s=>s.trim()).filter(Boolean);
     defs.forEach(pair=>{
       const [attr, key] = pair.split(':').map(s=>s.trim());
       const val = I18N[lang]?.[key];
-      if (attr && val) el.setAttribute(attr, val);
+      if (attr && typeof val === 'string') el.setAttribute(attr, val);
     });
   });
 
-  // État visuel boutons langue
+  // Boutons FR/EN
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
   });
 
-  // Libellé Afficher plus/moins selon l'état
+  // Met à jour le libellé du toggle casting
   const list = document.getElementById('casting-list');
   const toggle = document.querySelector('.toggle-casting');
   if (list && toggle){
     const expanded = list.classList.contains('expanded');
+    const tkey = expanded ? 'toggle.less' : 'toggle.more';
+    toggle.textContent = I18N[lang][tkey] || toggle.textContent;
+  }
+}
+
+/* ========= Casting : clamp + toggle ========= */
+function initCastingClamp(){
+  const list = document.getElementById('casting-list');
+  if(!list) return;
+  const rows = Array.from(list.querySelectorAll('.kv'));
+  const toggle = document.querySelector('.toggle-casting');
+
+  function apply(){
+    const expanded = list.classList.contains('expanded');
+    rows.forEach((row, i)=>{
+      row.style.display = (expanded || i < 3) ? 'grid' : 'none';
+    });
+    const lang = localStorage.getItem('lang') || 'fr';
     toggle.textContent = I18N[lang]['toggle.'+(expanded?'less':'more')] || toggle.textContent;
   }
+
+  if (toggle){
+    toggle.addEventListener('click', (e)=>{
+      e.preventDefault();
+      list.classList.toggle('expanded');
+      apply();
+    });
+  }
+  apply();
 }
 
 /* ========= Lightbox ========= */
@@ -174,62 +208,51 @@ function initLightbox(){
   const btnClose = lb.querySelector('.lb-close');
   let idx = 0;
 
-  function srcOf(i){ const a = links[i]; return a.getAttribute('href') || (a.querySelector('img') && a.querySelector('img').src); }
-  function altOf(i){ const im = links[i].querySelector('img'); return (im && im.alt) || ''; }
+  const srcOf = (i)=> {
+    const a = links[i];
+    return a.getAttribute('href') || (a.querySelector('img') && a.querySelector('img').src);
+  };
+  const altOf = (i)=> {
+    const im = links[i].querySelector('img');
+    return (im && im.getAttribute('alt')) || '';
+  };
+
   function open(i){ idx = i; update(); lb.classList.add('open'); lb.setAttribute('aria-hidden','false'); document.body.classList.add('lb-open'); }
   function close(){ lb.classList.remove('open'); lb.setAttribute('aria-hidden','true'); document.body.classList.remove('lb-open'); }
   function update(){ img.src = srcOf(idx); img.alt = altOf(idx); cap.textContent = img.alt || ''; }
   function next(){ idx = (idx + 1) % links.length; update(); }
   function prev(){ idx = (idx - 1 + links.length) % links.length; update(); }
 
-  links.forEach((a,i)=>{ a.addEventListener('click', e=>{ e.preventDefault(); open(i); }); });
-  btnNext.addEventListener('click', e=>{ e.stopPropagation(); next(); });
-  btnPrev.addEventListener('click', e=>{ e.stopPropagation(); prev(); });
-  btnClose.addEventListener('click', e=>{ e.stopPropagation(); close(); });
+  links.forEach((a,i)=>{
+    a.addEventListener('click', (e)=>{ e.preventDefault(); open(i); });
+  });
+  btnNext.addEventListener('click', (e)=>{ e.stopPropagation(); next(); });
+  btnPrev.addEventListener('click', (e)=>{ e.stopPropagation(); prev(); });
+  btnClose.addEventListener('click', (e)=>{ e.stopPropagation(); close(); });
 
-  document.addEventListener('keydown', e=>{
+  document.addEventListener('keydown', (e)=>{
     if(!lb.classList.contains('open')) return;
-    if(e.key === 'Escape') close();
-    else if(e.key === 'ArrowRight') next();
-    else if(e.key === 'ArrowLeft') prev();
+    if(e.key === 'Escape') return close();
+    if(e.key === 'ArrowRight') return next();
+    if(e.key === 'ArrowLeft') return prev();
   });
 
-  lb.addEventListener('click', e=>{ if(e.target === lb){ close(); } });
-}
-
-/* ========= Casting clamp (Afficher plus) ========= */
-function initCastingClamp(){
-  const list = document.getElementById('casting-list');
-  if(!list) return;
-  const rows = Array.from(list.querySelectorAll('.kv'));
-  const toggle = document.querySelector('.toggle-casting');
-
-  function apply(){
-    const expanded = list.classList.contains('expanded');
-    rows.forEach((row, i)=>{ row.style.display = (expanded || i < 3) ? 'grid' : 'none'; });
-    const lang = localStorage.getItem('lang') || 'fr';
-    if (toggle) toggle.textContent = I18N[lang]['toggle.'+(expanded?'less':'more')] || toggle.textContent;
-  }
-
-  if(toggle){
-    toggle.addEventListener('click', e=>{
-      e.preventDefault();
-      list.classList.toggle('expanded');
-      apply();
-    });
-  }
-  apply();
+  lb.addEventListener('click', (e)=>{
+    if(e.target === lb){ close(); }
+  });
 }
 
 /* ========= Init global ========= */
 document.addEventListener('DOMContentLoaded', ()=>{
-  // Année
+  // Année auto
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Langue
+  // Langue initiale
   const saved = localStorage.getItem('lang') || 'fr';
   setLang(saved);
+
+  // Boutons de langue
   document.querySelectorAll('.lang-btn').forEach(btn=>{
     btn.addEventListener('click', ()=> setLang(btn.dataset.lang));
   });
@@ -238,4 +261,3 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initCastingClamp();
   initLightbox();
 });
-
