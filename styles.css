@@ -59,11 +59,55 @@ li{margin-bottom:6px}
 @media(min-width:960px){ .split-grid{ grid-template-columns:400px 1fr } }
 @media(max-width:959.98px){ .split-grid{ grid-template-columns:1fr } }
 
-/* Gallery */
-.gallery{ display:grid; gap:16px; grid-template-columns:repeat(2,1fr) }
-.gallery a{ display:block }
-.gallery img{ width:100%; height:auto; display:block; object-fit:cover }
-.gallery a.featured{ grid-column:1 / -1 }
+/* ==== Galerie BOOK fluide & dense ==== */
+.gallery{
+  display: grid;
+  gap: 12px;
+  /* min 220px, sinon la carte s'étire pour remplir la ligne */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-auto-flow: dense; /* comble les trous intelligemment */
+}
+
+/* Desktop : un peu plus large */
+@media (min-width: 960px){
+  .gallery{
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+}
+
+/* Cartes */
+.gallery a{
+  display:block;
+  position:relative;
+  border-radius: 10px;
+  overflow:hidden;
+  background:#eee;
+}
+
+/* Images */
+.gallery img{
+  width:100%; height:100%;
+  display:block; object-fit:cover;
+  transition: transform .25s ease;
+}
+.gallery a:hover img{ transform: scale(1.015); }
+
+/* Rythme et hiérarchie */
+.gallery .featured{ grid-column: 1 / -1; }         /* pleine largeur */
+.gallery .span-2{ grid-column: span 2; }           /* occupe 2 colonnes (si possible) */
+.gallery .span-3{ grid-column: span 3; }           /* occupe 3 colonnes (si possible) */
+
+/* Ratios visuels (peuvent s’additionner aux spans) */
+.gallery .portrait{ aspect-ratio: 4 / 5; }         /* portrait “book” */
+.gallery .landscape{ aspect-ratio: 3 / 2; }        /* horizontal */
+.gallery .square{ aspect-ratio: 1 / 1; }           /* carré (vignettes) */
+
+/* Mobile : une seule colonne → on garde les ratios, pas les spans */
+@media (max-width: 599.98px){
+  .gallery .span-2, .gallery .span-3{ grid-column: auto; }
+}
+
 
 /* Video card */
 .video-card{ background:#fff; border:1px solid var(--line); border-radius:8px; overflow:hidden }
