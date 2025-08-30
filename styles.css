@@ -47,8 +47,8 @@ li{margin-bottom:6px}
 .kv-list{display:grid}
 .kv{
   display:grid; 
-  grid-template-columns:140px 1fr; 
-  gap:5px;
+  grid-template-columns:100px 1fr; 
+  gap:2px;
   padding:8px 0; 
   border-bottom:1px solid var(--line)
 }
