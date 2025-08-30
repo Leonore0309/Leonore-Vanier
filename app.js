@@ -261,3 +261,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
   initCastingClamp();
   initLightbox();
 });
+
+// Capture d'écran au clic sur le bouton
+const snapBtn = document.getElementById('download-snap');
+if (snapBtn) {
+  snapBtn.addEventListener('click', async (e)=>{
+    e.preventDefault();
+    const element = document.body; // ou .container si tu veux uniquement le contenu central
+    html2canvas(element, {useCORS:true, scale:2}).then(canvas=>{
+      // Récupérer l'année en cours
+      const year = new Date().getFullYear();
+
+      // Nom de fichier personnalisé
+      const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.png`;
+
+      // Télécharger
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }).catch(err=>{
+      console.error("Erreur capture:", err);
+      alert("La capture n'a pas pu être générée 😔");
+    });
+  });
+}
