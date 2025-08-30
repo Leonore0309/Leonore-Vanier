@@ -279,84 +279,45 @@ function ensureHtml2Canvas() {
   });
 }
 
-/* ====== PDF A4 depuis le contenu central (.container) ====== */
-
-// (optionnel) fallback si html2canvas n'est pas encore chargé
-async function ensureHtml2Canvas() {
-  if (window.html2canvas) return;
-  await new Promise((resolve, reject) => {
-    const s = document.createElement('script');
-    s.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
-    s.onload = () => window.html2canvas ? resolve() : reject(new Error('html2canvas non chargé'));
-    s.onerror = reject;
-    document.head.appendChild(s);
-  });
-}
-
+// ====== Export PDF A4 (html2pdf.js) ======
 (function initPDF(){
   const btn = document.getElementById('download-snap');
   if (!btn) return;
 
   btn.addEventListener('click', async () => {
     try {
-      await ensureHtml2Canvas();
-      if (!window.jspdf || !window.jspdf.jsPDF) {
-        alert("Le PDF n'a pas pu être généré : jsPDF non chargé.");
-        return;
+      // 1) attendre les polices (sinon le titre peut "sauter")
+      if (document.fonts && document.fonts.ready) {
+        await document.fonts.ready;
       }
 
-      // Cible : uniquement le contenu central
-      const target = document.querySelector('main.container') || document.querySelector('.container') || document.body;
-      + const target = document.body;
-      + if (document.fonts && document.fonts.ready) {
-      +   await document.fonts.ready; // polices Inter chargées → rendu net du nom
-      + }
-      // Capture en canvas (fond blanc, échelle nette)
-      const canvas = await html2canvas(target, {
-        backgroundColor: '#ffffff',
-        useCORS: true,
-        scale: 2, // net sur écrans rétina
-        scrollX: 0, scrollY: -window.scrollY // évite décalage si page scrollée
-      });
+      // 2) zone à capturer : tout le body => inclut le header (nom/prénom) + les photos
+      const source = document.body; // ou document.querySelector('#pdf-root') si tu crées un wrapper
 
-      const imgData = canvas.toDataURL('image/png');
-
-      // PDF A4 portrait en millimètres
-      const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
-      const pageW = pdf.internal.pageSize.getWidth();     // 210mm
-      const pageH = pdf.internal.pageSize.getHeight();    // 297mm
-      const margin = 10;                                   // marge 10mm
-      const usableW = pageW - margin * 2;
-      const usableH = pageH - margin * 2;
-
-      // Dimension image (conservant le ratio) dans la largeur utile
-      const imgW = usableW;
-      const imgH = (canvas.height * imgW) / canvas.width;
-
-      // Première page
-      let heightLeft = imgH;
-      let positionY = margin;
-
-      pdf.addImage(imgData, 'PNG', margin, positionY, imgW, imgH);
-      heightLeft -= usableH;
-
-      // Pages suivantes si besoin
-      while (heightLeft > 0) {
-        pdf.addPage();
-        // Position = marge - (hauteur déjà imprimée)
-        positionY = margin - (imgH - heightLeft);
-        pdf.addImage(imgData, 'PNG', margin, positionY, imgW, imgH);
-        heightLeft -= usableH;
-      }
-
-      // Nom du fichier
+      // 3) options A4 + qualité/performances
       const year = new Date().getFullYear();
       const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.pdf`;
-      pdf.save(filename);
+
+      const opt = {
+        margin:       10,                        // mm
+        filename,
+        image:        { type: 'jpeg', quality: 0.95 },
+        html2canvas:  {
+          backgroundColor: '#ffffff',
+          useCORS: true,
+          scale: window.devicePixelRatio > 1 ? 1.8 : 1.2, // ↓ si c'est lent : mets 1.2~1.5
+          scrollX: 0, scrollY: -window.scrollY
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['avoid-all', 'css', 'legacy'] } // évite de couper en plein titre/image si possible
+      };
+
+      // 4) lancer la génération + téléchargement
+      await html2pdf().set(opt).from(source).save();
 
     } catch (err) {
       console.error('Erreur PDF:', err);
-      alert("Le PDF n'a pas pu être généré. Vérifie que la page est servie en https et que les images sont locales (même domaine).");
+      alert("Le PDF n'a pas pu être généré.");
     }
   });
 })();
