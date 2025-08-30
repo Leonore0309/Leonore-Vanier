@@ -307,7 +307,10 @@ async function ensureHtml2Canvas() {
 
       // Cible : uniquement le contenu central
       const target = document.querySelector('main.container') || document.querySelector('.container') || document.body;
-
+      + const target = document.body;
+      + if (document.fonts && document.fonts.ready) {
+      +   await document.fonts.ready; // polices Inter chargées → rendu net du nom
+      + }
       // Capture en canvas (fond blanc, échelle nette)
       const canvas = await html2canvas(target, {
         backgroundColor: '#ffffff',
