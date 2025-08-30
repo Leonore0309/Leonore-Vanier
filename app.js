@@ -104,7 +104,7 @@ const I18N = {
     "theatre.item5": "LA BONNE ÂME DU SE-TCHOUAN – Dir. Xavier Bazin – Role: Woman",
     "theatre.item6": "RING – Dir. Frédérique Auger – Théâtre Clavel – Role: Woman",
 
-    "films.item1": "I'LL FIND ANOTHER ONE – Dir. Louis Faudais – Lead (comedy) – Selected \"1 min 2 court Festival\"",
+    "films.item1": "J'EN TROUVERAI UN AUTRE – Dir. Louis Faudais – Lead (comedy) – Selected \"1 min 2 court Festival\"",
     "films.item2": "LE DAHUT – Dir. Léonore Vanier – Lead (comedy) – Selected \"Prix Florent Image\"",
     "films.item3": "MASTERPROF – Dir. Jef Yomby – Opango – Lead (comedy)",
 
