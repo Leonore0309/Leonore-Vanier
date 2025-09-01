@@ -49,52 +49,59 @@
         <aside class="media-rail">
           <h2 id="photos" data-i18n="section.photos">Photos</h2>
           <div class="gallery">
-            <!-- 1) Grande ouverture -->
-            <a class="portrait span-2" href="photos/Epoque.jpg" aria-label="Epoque">
-              <img src="photos/Epoque.jpg" alt="Epoque" loading="lazy" decoding="async">
-            </a>
+          <!-- CLUSTER 1 : grande colonne -->
+            <div class="cluster">
+              <a class="portrait tall" href="photos/Epoque.jpg" aria-label="Epoque">
+                <img src="photos/Epoque.jpg" alt="Epoque" loading="lazy" decoding="async">
+              </a>
+            </div>
 
-            <!-- 2) Deux moyennes côte-à-côte -->
-            <a class="portrait" href="photos/jeune.jpg" aria-label="Innocence">
-              <img src="photos/jeune.jpg" alt="Innocence" loading="lazy" decoding="async">
-            </a>
-            <a class="portrait" href="photos/Fatale.jpg" aria-label="Femme fatale">
-              <img src="photos/Fatale.jpg" alt="Femme fatale" loading="lazy" decoding="async">
-            </a>
-            <a class="portrait" href="photos/malice.jpg" aria-label="Malice">
-              <img src="photos/malice.jpg" alt="Malice" loading="lazy" decoding="async">
-            </a>
-            <a class="portrait" href="photos/romantique.jpg" aria-label="Romantique">
-              <img src="photos/romantique.jpg" alt="Romantique" loading="lazy" decoding="async">
-            </a>
-            
-            <a class="portrait" href="photos/Puissante.jpeg" aria-label="Puissante">
-              <img src="photos/Puissante.jpeg" alt="Puissante" loading="lazy" decoding="async">
-            </a>
+          <!-- CLUSTER 2 : moyen à gauche + pile à droite -->
+            <div class="cluster split">
+              <a class="portrait medium" href="photos/jeune.jpg" aria-label="Innocence">
+                <img src="photos/jeune.jpg" alt="Innocence" loading="lazy" decoding="async">
+              </a>
+              <div class="stack">
+                <a class="portrait small" href="photos/Fatale.jpg" aria-label="Femme fatale">
+                  <img src="photos/Fatale.jpg" alt="Femme fatale" loading="lazy" decoding="async">
+                </a>
+                <a class="portrait small" href="photos/malice.jpg" aria-label="Malice">
+                  <img src="photos/malice.jpg" alt="Malice" loading="lazy" decoding="async">
+                </a>
+              </div>
+            </div>
 
-            <!-- 4) Une large (2 colonnes) + une moyenne -->
-            <a class="portrait" href="photos/douceur.jpg" aria-label="Douceur">
-              <img src="photos/douceur.jpg" alt="Douceur" loading="lazy" decoding="async">
-            </a>
-            <a class="portrait" href="photos/Héroïne romantique.jpg" aria-label="Héroïne romantique">
-              <img src="photos/Héroïne romantique.jpg" alt="Héroïne romantique" loading="lazy" decoding="async">
-            </a>
+        <!-- CLUSTER 3 : pile à gauche + moyen à droite -->
+          <div class="cluster split reverse">
+            <div class="stack">
+              <a class="portrait small" href="photos/romantique.jpg" aria-label="Romantique">
+                <img src="photos/romantique.jpg" alt="Romantique" loading="lazy" decoding="async">
+              </a>
+              <a class="portrait small" href="photos/Puissante.jpeg" aria-label="Puissante">
+                <img src="photos/Puissante.jpeg" alt="Puissante" loading="lazy" decoding="async">
+              </a>
+            </div>
+              <a class="portrait medium" href="photos/douceur.jpg" aria-label="Douceur">
+                <img src="photos/douceur.jpg" alt="Douceur" loading="lazy" decoding="async">
+              </a>
+            </div>
 
-            <!-- 5) Deux moyennes -->
-            <a class="portrait" href="photos/Héroïne romantique époque.jpg" aria-label="Héroïne romantique époque">
-              <img src="photos/Héroïne romantique époque.jpg" alt="Héroïne romantique époque" loading="lazy" decoding="async">
+        <!-- CLUSTER 4 : moyen à gauche + pile à droite -->
+          <div class="cluster split">
+            <a class="portrait medium" href="photos/H%C3%A9ro%C3%AFne%20romantique.jpg" aria-label="Héroïne romantique">
+              <img src="photos/H%C3%A9ro%C3%AFne%20romantique.jpg" alt="Héroïne romantique" loading="lazy" decoding="async">
             </a>
-            <a class="portrait" href="photos/Jeune flic.jpg" aria-label="Jeune flic">
-              <img src="photos/Jeune flic.jpg" alt="Jeune flic" loading="lazy" decoding="async">
-            </a>
+            <div class="stack">
+              <a class="portrait small" href="photos/H%C3%A9ro%C3%AFne%20romantique%20%C3%A9poque.jpg" aria-label="Héroïne romantique époque">
+                <img src="photos/H%C3%A9ro%C3%AFne%20romantique%20%C3%A9poque.jpg" alt="Héroïne romantique époque" loading="lazy" decoding="async">
+              </a>
+              <a class="portrait small" href="photos/Jeune%20flic.jpg" aria-label="Jeune flic">
+                <img src="photos/Jeune%20flic.jpg" alt="Jeune flic" loading="lazy" decoding="async">
+              </a>
+            </div>
+          </div>
 
-            <!-- 6) Finale pleine largeur (si tu veux) -->
-            <!-- <a class="featured landscape" href="photos/une-autre.jpg" aria-label="Finale">
-              <img src="photos/une-autre.jpg" alt="Finale" loading="lazy" decoding="async">
-            </a> -->
-
-      </div>
-
+        </div>
         </aside>
         
         <!-- Colonne droite : Expériences / textes -->
