@@ -85,7 +85,7 @@ const I18N = {
     "bio.quote": "\"Invent, imagine, suppose. Search your mind for something strange, outrageous, terrible, unheard of! A dazzling twist of fate!\" [Ruy Blas, Victor Hugo]",
 
     "casting.langues.k": "Languages",
-    "casting.langues.v": "English (bilingual, no accent), Spanish (advanced), Korean, Italian (basic), French (native)",
+    "casting.langues.v": "English (fluent, no accent), Spanish (advanced), Korean, Italian (basic), French (native)",
     "casting.danses.k": "Dance",
     "casting.danses.v": "Cheer dance (competition), Ballet (very good), Modern Jazz (good)",
     "casting.musique.k": "Music",
