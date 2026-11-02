@@ -1,7 +1,7 @@
 /* ========= I18N : dictionnaire FR/EN ========= */
 const I18N = {
   fr: {
-    "contact.inline": "Tél : 06 79 10 75 93 • Email : leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
+    "contact.inline": "Email : leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
 
     "section.photos": "Photos",
     "nav.bio": "Bio",
@@ -66,7 +66,7 @@ const I18N = {
   },
 
   en: {
-    "contact.inline": "Phone: +33 6 79 10 75 93 • Email: leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
+    "contact.inline": "Email: leonore.vanier@gmail.com • Paris, Île-de-France • 170 cm",
 
     "section.photos": "Photos",
     "nav.bio": "Bio",
@@ -296,7 +296,7 @@ function ensureHtml2Canvas() {
 
       // 3) options A4 + qualité/performances
       const year = new Date().getFullYear();
-      const filename = `CV artistique Léonore Vanier - 06 79 10 75 93 - ${year}.pdf`;
+      const filename = `CV artistique Léonore Vanier - ${year}.pdf`;
 
       const opt = {
         margin:       10,                        // mm
